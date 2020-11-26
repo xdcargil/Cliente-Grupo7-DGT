@@ -1,5 +1,5 @@
 
-
+ // ------------- Clase Persona  -------------
 class Persona { 
 
     constructor(sNif,sNombre,sApellidos,sDireccion){
@@ -21,9 +21,12 @@ class Persona {
     }
 
 }
+ // ------------- FIN Clase Persona  -------------
 
 
 
+
+ // ------------- Clase Conductor hereda de PERSONA  -------------
 class Conductor extends Persona { //Clase Conductor hereda de Persona
     constructor(sNif, sNombre, sApellidos, sDireccion,dCaducidadCarnet){
         super(sNif, sNombre, sApellidos, sDireccion);
@@ -44,9 +47,12 @@ class Conductor extends Persona { //Clase Conductor hereda de Persona
     }
 
 }
+ // ------------- FIN Clase Conductor hereda de PERSONA  -------------
 
 
 
+
+ // ------------- Clase GuardiaCivil hereda de PERSONA  -------------
 class GuardiaCivil extends Persona { //Clase GuardiaCivil hereda de Persona
     constructor(sNif, sNombre, sApellidos, sDireccion,sPuesto){
         super(sNif, sNombre, sApellidos, sDireccion);
@@ -67,3 +73,96 @@ class GuardiaCivil extends Persona { //Clase GuardiaCivil hereda de Persona
     }
 
 }
+ // ------------- FIN Clase GuardiaCivil hereda de PERSONA  -------------
+
+
+
+
+
+// ------------- Clase Multa  -------------
+function Multa(idMulta, sNIFConductor, sNIFGuardia, dImporte, bPagada, sDescripcion, dFecha) { //Clase Multa
+    this.multa = idMulta;
+    this.NIFConductor = sNIFConductor;
+    this.NIFGuardia = sNIFGuardia;
+    this.importe = dImporte;
+    this.pagada = bPagada;
+    this.descripcion = sDescripcion;
+    this.fecha = dFecha;
+}
+
+Multa.prototype.toHTMLRow = function() { //Metodo de la clase Multa
+    let sFila = "<tr>";
+    sFila += "<td>" + this.multa + "</td>";
+    sFila += "<td>" + this.NIFConductor + "</td>";
+    sFila += "<td>" + this.NIFGuardia + "</td>";
+    sFila += "<td>" + this.importe + "</td>";
+    sFila += "<td>" + this.pagada + "</td>";
+    sFila += "<td>" + this.descripcion + "</td>";
+    sFila += "<td>" + this.fecha + "</td>";
+
+    sFila += "</tr>";
+
+    return sFila;
+}
+// ------------- FIN Clase Multa  -------------
+
+
+// ------------- Clase Leve hereda de MULTA  -------------
+function Leve(idMulta, sNIFConductor, sNIFGuardia, dImporte, bPagada, sDescripcion, dFecha, bBonificada){ //Clase leve hereda de Multa
+    Multa.call(this, idMulta, sNIFConductor, sNIFGuardia, dImporte, bPagada, sDescripcion, dFecha);   
+	this.bonificada = bBonificada;
+
+};
+
+Leve.prototype = Object.create(Multa.prototype);
+Leve.prototype.constructor = Leve;
+
+Leve.prototype.toHTMLRow = function(){
+
+    let sFila = "<tr>";
+    sFila += "<td>" + this.multa + "</td>";
+    sFila += "<td>" + this.NIFConductor + "</td>";
+    sFila += "<td>" + this.NIFGuardia + "</td>";
+    sFila += "<td>" + this.importe + "</td>";
+    sFila += "<td>" + this.pagada + "</td>";
+    sFila += "<td>" + this.descripcion + "</td>";
+    sFila += "<td>" + this.fecha + "</td>";
+    sFila += "<td>" + this.bonificada + "</td>";
+
+    sFila += "</tr>";
+
+    return sFila;
+
+}
+// ------------- FIN Clase Leve hereda de MULTA  -------------
+
+
+
+// ------------- Clase Grave hereda de MULTA  -------------
+function Grave(idMulta, sNIFConductor, sNIFGuardia, dImporte, bPagada, sDescripcion, dFecha,iPuntos){ 
+    Multa.call(this,idMulta, sNIFConductor, sNIFGuardia, dImporte, bPagada, sDescripcion, dFecha);   
+	this.puntos = iPuntos;
+
+};
+
+Grave.prototype = Object.create(Multa.prototype);
+Grave.prototype.constructor = Grave;
+
+Grave.prototype.toHTMLRow = function(){
+
+    let sFila = "<tr>";
+    sFila += "<td>" + this.multa + "</td>";
+    sFila += "<td>" + this.NIFConductor + "</td>";
+    sFila += "<td>" + this.NIFGuardia + "</td>";
+    sFila += "<td>" + this.importe + "</td>";
+    sFila += "<td>" + this.pagada + "</td>";
+    sFila += "<td>" + this.descripcion + "</td>";
+    sFila += "<td>" + this.fecha + "</td>";
+    sFila += "<td>" + this.puntos + "</td>";
+
+    sFila += "</tr>";
+
+    return sFila;
+
+}
+// ------------- FIN Clase Grave hereda de MULTA  -------------
