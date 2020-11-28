@@ -1,23 +1,306 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="style.css"  />
-    <title>DGT</title>
-  </head>
-  <body>
-    <h1>DGT</h1>
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <title>DGT</title>
+</head>
+
+<body>
+  <h1>DGT</h1>
+
+  <div class="container">
+    <div id="menu">
+
+
+      <h4>Registro Personas</h4>
+      <hr>
+
+      <form class="form-horizontal" name="frmMenuOpciones">
+
+        <div class="form-group">
+          <div class="col-md-12">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#altaConductorModal">
+              Alta de conductor
+            </button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-md-12">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#altaGuardiaCivilModal">
+              Alta Guardia Civil
+            </button>
+          </div>
+        </div>
+
+
+
+
+
+        <h4>Registro Multas</h4>
+        <hr>
+
+        <div class="form-group">
+          <div class="col-md-12">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#altaConductorModal">
+              Registrar Multa
+            </button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-md-12">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#altaConductorModal">
+              Pagar Multa
+            </button>
+          </div>
+        </div>
+
+
+
+
+        <h4>Listados</h4>
+        <hr>
+
+        <div class="form-group">
+          <div class="col-md-12">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#altaConductorModal">
+              Listado Saldo Conductor
+            </button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-md-12">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#altaConductorModal">
+              Listado Puntos Conductor
+            </button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-md-12">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#altaConductorModal">
+              Listado Multas Por Guardia
+            </button>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <div class="col-md-12">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#altaConductorModal">
+              Listado Multas Por Fecha
+            </button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-md-12">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#altaConductorModal">
+              Listado Conductores
+            </button>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <div class="col-md-12">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#altaConductorModal">
+              Listado Guardia Civiles
+            </button> </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-md-12">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#altaConductorModal">
+              Imprimir Multa
+            </button>
+          </div>
+        </div>
+      </form>
+
+      <!--Modal de ALTA CONDUCTOR-->
+      <div class="modal" tabindex="-1" role="dialog" id="altaConductorModal">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Alta Conductor</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form class="form-horizontal" name="frmAltaConductor">
+
+                <div class="form-group">
+                  <!--CAMPO NIF CONDUCTOR-->
+                  <label class="col-md-12 control-label" for="txtNIF">NIF del conductor</label>
+                  <div class="col-md-12">
+                    <input id="txtNIF" name="txtNIF" type="text" placeholder="" class="form-control input-md">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <!--CAMPO NOMBRE CONDUCTOR-->
+                  <label class="col-md-12 control-label" for="txtNombre">Nombre del conductor</label>
+                  <div class="col-md-12">
+                    <input id="txtNombre" name="txtNombre" type="text" placeholder="" class="form-control input-md">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <!--CAMPO APELLIDOS CONDUCTOR-->
+                  <label class="col-md-12 control-label" for="txtApellidos">Apellidos del conductor</label>
+                  <div class="col-md-12">
+                    <input id="txtApellidos" name="txtApellidos" type="text" placeholder=""
+                      class="form-control input-md">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <!--CAMPO DIRECCIÓN CONDUCTOR-->
+                  <label class="col-md-12 control-label" for="txtDireccion">Dirección del conductor</label>
+                  <div class="col-md-12">
+                    <input id="txtDireccion" name="txtDireccion" type="text" placeholder=""
+                      class="form-control input-md">
+                  </div>
+                </div>
+
+
+                <div class="form-group">
+                  <!--CAMPO FECHA DE CADUCIDAD CONDUCTOR-->
+                  <label class="col-md-12 control-label" for="txtDireccion">Fecha de caducidad del conductor</label>
+                  <div class="col-md-12">
+                    <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
+                  </div>
+                </div>
+
+              </form>
+            </div>
+            <div class="modal-footer">
+              <!--BOTONES CONDUCTOR-->
+              <input type="button" class="btn btn-primary" id="btnAltaConductor" name="btnAltaConductor"
+                value="Guardar Cambios" onclick="altaConductor();" />
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--FIN Modal de ALTA CONDUCTOR-->
+
+
+
+
+
+
+
+
+
+      <!--Modal de ALTA GUARDIA CIVIL-->
+      <div class="modal" tabindex="-1" role="dialog" id="altaGuardiaCivilModal">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Alta Guardia Civil</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form class="form-horizontal" name="frmAltaGuardiaCivil">
+
+                <div class="form-group">
+                  <!--CAMPO NIF GUARDIA CIVIL-->
+                  <label class="col-md-12 control-label" for="txtNIF">NIF Guardia Civil</label>
+                  <div class="col-md-12">
+                    <input id="txtNIF" name="txtNIF" type="text" placeholder="" class="form-control input-md">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <!--CAMPO NOMBRE GUARDIA CIVIL-->
+                  <label class="col-md-12 control-label" for="txtNombre">Nombre Guardia Civil</label>
+                  <div class="col-md-12">
+                    <input id="txtNombre" name="txtNombre" type="text" placeholder="" class="form-control input-md">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <!--CAMPO APELLIDOS GUARDIA CIVIL-->
+                  <label class="col-md-12 control-label" for="txtApellidos">Apellidos Guardia Civil</label>
+                  <div class="col-md-12">
+                    <input id="txtApellidos" name="txtApellidos" type="text" placeholder=""
+                      class="form-control input-md">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <!--CAMPO DIRECCIÓN GUARDIA CIVIL-->
+                  <label class="col-md-12 control-label" for="txtDireccion">Dirección Guardia Civil</label>
+                  <div class="col-md-12">
+                    <input id="txtDireccion" name="txtDireccion" type="text" placeholder=""
+                      class="form-control input-md">
+                  </div>
+                </div>
+
+
+                <div class="form-group">
+                  <!--CAMPO PUESTO GUARDIA CIVIL-->
+                  <label class="col-md-12 control-label" for="txtDireccion">Puesto Guardia Civil</label>
+                  <div class="col-md-12">
+                    <input id="txtDireccion" name="txtDireccion" type="text" placeholder=""
+                      class="form-control input-md">
+                  </div>
+                </div>
+
+
+
+              </form>
+            </div>
+            <div class="modal-footer">
+              <!--BOTONES GUARDIA CIVIL-->
+              <input type="button" class="btn btn-primary" id="btnAltaConductor" name="btnAltaGuardiaCivil"
+                value="Guardar Cambios" onclick="altaGuardiaCivil();" />
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--FIN Modal de GUARDIA CIVIL-->
+
+
+
+
+
+
+
+
+
+    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script type="text/javascript" src="objetos.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  </body>
+    <script type="text/javascript" src="js/objetos.js"></script>
+    <script type="text/javascript" src="js/codigo.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"></script>
+</body>
+
 </html>

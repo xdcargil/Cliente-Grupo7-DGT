@@ -1,0 +1,27 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+
+h1{
+    text-align: center;
+    border-bottom:solid 3px blue;
+    padding: 1%;
+}
+.btn{
+    background-color: #61B7FF;
+    font-weight: bold;
+    font-size: 16px;
+    color: #042F52;
+}
+h4{
+    padding: 1%;
+}
+#menu button  {
+    width: 35%;
+}
+#menu{
+    text-align: center;
+    width: 100%;
+}
