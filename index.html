@@ -72,7 +72,7 @@
 
         <div class="form-group">
           <div class="col-md-12">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#altaConductorModal">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#listadoSaldoConductorModal">
               Listado Saldo Conductor
             </button>
           </div>
@@ -80,7 +80,7 @@
 
         <div class="form-group">
           <div class="col-md-12">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#altaConductorModal">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#listadoPuntosConductorModal">
               Listado Puntos Conductor
             </button>
           </div>
@@ -88,7 +88,7 @@
 
         <div class="form-group">
           <div class="col-md-12">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#altaConductorModal">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#listadoMultasGuardia">
               Listado Multas Por Guardia
             </button>
           </div>
@@ -97,7 +97,7 @@
 
         <div class="form-group">
           <div class="col-md-12">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#altaConductorModal">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#listadoMultasFecha">
               Listado Multas Por Fecha
             </button>
           </div>
@@ -105,7 +105,7 @@
 
         <div class="form-group">
           <div class="col-md-12">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#altaConductorModal">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#listadoConductoresModal">
               Listado Conductores
             </button>
           </div>
@@ -114,14 +114,14 @@
 
         <div class="form-group">
           <div class="col-md-12">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#altaConductorModal">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#listadoGuardiasCivilesModal">
               Listado Guardia Civiles
             </button> </div>
         </div>
 
         <div class="form-group">
           <div class="col-md-12">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#altaConductorModal">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#listadoMultaModal">
               Imprimir Multa
             </button>
           </div>
@@ -196,13 +196,6 @@
         </div>
       </div>
       <!--FIN Modal de ALTA CONDUCTOR-->
-
-
-
-
-
-
-
 
 
       <!--Modal de ALTA GUARDIA CIVIL-->
@@ -341,6 +334,21 @@
                   </div>
                 </div>
 
+                <div class="form-group">
+                  <!--CAMPO LEVE MULTA-->
+                  <label class="col-md-12 control-label" for="txtLeve">Leve</label>
+                  <div class="col-md-12">
+                    <input id="txtFecha" name="txtLeve" type="radio" placeholder="" class="form-control input-md">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <!--CAMPO GRAVE MULTA-->
+                  <label class="col-md-12 control-label" for="txtLeve">Grave</label>
+                  <div class="col-md-12">
+                    <input id="txtFecha" name="txtLeve" type="radio" placeholder="" class="form-control input-md">
+                  </div>
+                </div>
+
 
               </form>
             </div>
@@ -393,7 +401,7 @@
               </form>
             </div>
             <div class="modal-footer">
-              <!--BOTONES REGISTRO MULTA-->
+              <!--BOTONES PAGAR MULTA-->
               <input type="button" class="btn btn-primary" id="btnPagarMulta" name="btnPagarMulta"
                 value="Guardar Cambios" onclick="pagarMulta();" />
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -402,6 +410,189 @@
         </div>
       </div>
       <!--FIN Modal de PAGAR MULTA-->
+
+      <!--Modal de LISTADO SALDO CONDUCTOR-->
+      <div class="modal" tabindex="-1" role="dialog" id="listadoSaldoConductorModal">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Mostrar listado saldo conductor</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div id="cuerpoModalListadoSaldoConductor" name="cuerpoModalListadoSaldoConductor">
+                <!-- Aqui va la informacion de listado de saldo conductor -->
+              </div>
+            </div>
+            <div class="modal-footer">
+              <!--BOTONES LISTADO SALDO CONDUCTOR-->
+              <input type="button" class="btn btn-primary" id="btnListadoSaldoConductor" name="btnListadoSaldoConductor"
+                value="Mostrar" onclick="mostrarSaldoConductor();" />
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--FIN Modal de LISTADO SALDO CONDUCTOR-->
+
+      <!--Modal de LISTADO PUNTOS CONDUCTOR-->
+      <div class="modal" tabindex="-1" role="dialog" id="listadoPuntosConductorModal">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Mostrar listado puntos conductor</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div id="cuerpoModalListadoPuntosConductor" name="cuerpoModalListadoPuntosConductor">
+                <!-- Aqui va la informacion de listado de saldo conductor -->
+              </div>
+            </div>
+            <div class="modal-footer">
+              <!--BOTONES LISTADO CONDUCTORES-->
+              <input type="button" class="btn btn-primary" id="btnListadoPuntosConductor"
+                name="btnListadoPuntosConductor" value="Mostrar" onclick="mostrarPuntosConductor();" />
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--FIN Modal de LISTADO PUNTOS CONDUCTOR-->
+
+      <!--Modal de LISTADO MULTAS GUARDIA-->
+      <div class="modal" tabindex="-1" role="dialog" id="listadoMultasGuardia">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Mostrar listado Multas Guardia</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div id="cuerpoModalListadoMultasGuardia" name="cuerpoModalListadoMultasGuardia">
+                <!-- Aqui va la informacion de listado de saldo conductor -->
+              </div>
+            </div>
+            <div class="modal-footer">
+              <!--BOTONES LISTADO MULTAS GUARDIA-->
+              <input type="button" class="btn btn-primary" id="btnListadoMultasGuardia" name="btnListadoMultasGuardia"
+                value="Mostrar" onclick="mostrarMultasGuardia();" />
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--FIN Modal de LISTADO MULTAS GUARDIA-->
+
+      <!--Modal de LISTADO MULTAS FECHA>-->
+      <div class="modal" tabindex="-1" role="dialog" id="listadoMultasFecha">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Mostrar listado Multas Por Fecha</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div id="cuerpoModalListadoMultasFecha" name="cuerpoModalListadoMultasFecha">
+                <!-- Aqui va la informacion de listado de saldo conductor -->
+              </div>
+            </div>
+            <div class="modal-footer">
+              <!--BOTONES LISTADO MULTAS POR FECHA-->
+              <input type="button" class="btn btn-primary" id="btnMultasPorFecha" name="btnMultasPorFecha"
+                value="Mostrar" onclick="mostrarMultasFecha();" />
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--FIN Modal de LISTADO MULTAS FECHA-->
+
+      <!--Modal de LISTADO CONDUCTORES>-->
+      <div class="modal" tabindex="-1" role="dialog" id="listadoConductoresModal">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Mostrar listado Conductores</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div id="cuerpoModalListadoConductores" name="cuerpoModalListadoConductores">
+                <!-- Aqui va la informacion de listado de saldo conductor -->
+              </div>
+            </div>
+            <div class="modal-footer">
+              <!--BOTONES LISTADO CONDUCTORES-->
+              <input type="button" class="btn btn-primary" id="btnListadoConductores" name="btnListadoConductores"
+                value="Mostrar" onclick="mostrarListadoConductores();" />
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--FIN Modal de LISTADO MULTAS FECHA-->
+
+      <!--Modal de LISTADO GUARDIAS CIVILES>-->
+      <div class="modal" tabindex="-1" role="dialog" id="listadoGuardiasCivilesModal">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Mostrar listado Guardias Civiles</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div id="cuerpoModalListadoGuardiasCiviles" name="cuerpoModalListadoGuardiasCiviles">
+                <!-- Aqui va la informacion de listado de saldo conductor -->
+              </div>
+            </div>
+            <div class="modal-footer">
+              <!--BOTONES LISTADO GUARDIAS CIVILES-->
+              <input type="button" class="btn btn-primary" id="btnListadoGuardiasCiviles"
+                name="btnListadoGuardiasCiviles" value="Mostrar" onclick="mostrarListadoGuardiasCiviles();" />
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--FIN Modal de LISTADO GUARDIAS CIVILES-->
+
+      <!--Modal de LISTADO MULTA-->
+      <div class="modal" tabindex="-1" role="dialog" id="listadoMultaModal">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Mostrar listado Multa</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+              <div id="cuerpoModalListadoMulta" name="cuerpoModalListadoMulta">
+                <!-- Aqui va la informacion de listado de saldo conductor -->
+              </div>
+            </div>
+            <div class="modal-footer">
+              <!--BOTONES LISTADO IMPRIMIR MULTA-->
+              <input type="button" class="btn btn-primary" id="btnListadoMulta" name="btnListadoMulta" value="Mostrar"
+                onclick="mostrarImprimirMulta();" />
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--FIN Modal de LISTADO MULTA-->
+
 
 
 

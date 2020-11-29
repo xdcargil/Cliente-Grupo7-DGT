@@ -24,6 +24,14 @@ function altaGuardiaCivil() {
     let sApellido = frmAltaGuardiaCivil.txtApellidos.value;
     let sDireccion = frmAltaGuardiaCivil.txtDireccion.value;
     let sPuesto = frmAltaGuardiaCivil.txtPuesto.value;
+    alert("Datos");
+    alert(sNif);
+    alert(sNombre);
+    alert(sPuesto);
+
+   let oNuevoGuardiaCivil = new GuardiaCivil(sNif,sNombre,sApellido,sDireccion,sPuesto);
+
+    alert(oNuevoGuardiaCivil);
 
 
 
