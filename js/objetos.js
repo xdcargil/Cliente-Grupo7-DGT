@@ -28,14 +28,31 @@ class Persona {
 
 // -------------  Clase DGT   -------------
 
-class DGT{
+class DGT {
     constructor() {
         this.multas = [];
         this.personas = [];
     }
 
-    altaConductor(oConductor){
-        
+    altaConductor(oConductor) {
+        let oExisteConductor = oDGT._buscarPersona(oConductor.NIF);
+
+        if (oExisteConductor == null) {
+            this.personas.push(oConductor);
+        } else {
+            alert("El conductor ya existe");
+        }
+
+
+    }
+
+    _buscarPersona(iNIF) {
+
+        let oPersonaExistente = null;
+
+        oPersonaExistente = this.personas.find(persona => persona.NIF == iNIF);
+
+        return oPersonaExistente;
     }
 
 
@@ -63,6 +80,7 @@ class Conductor extends Persona { //Clase Conductor hereda de Persona
 
         return sFila;
     }
+
 
 }
 // ------------- FIN Clase Conductor hereda de PERSONA  -------------
