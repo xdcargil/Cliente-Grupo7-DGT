@@ -341,6 +341,21 @@
                   </div>
                 </div>
 
+                <div class="form-group">
+                  <!--CAMPO LEVE MULTA-->
+                  <label class="col-md-12 control-label" for="txtLeve">Leve</label>
+                  <div class="col-md-12">
+                    <input id="txtFecha" name="txtLeve" type="radio" placeholder="" class="form-control input-md">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <!--CAMPO GRAVE MULTA-->
+                  <label class="col-md-12 control-label" for="txtLeve">Grave</label>
+                  <div class="col-md-12">
+                    <input id="txtFecha" name="txtLeve" type="radio" placeholder="" class="form-control input-md">
+                  </div>
+                </div>
+
 
               </form>
             </div>
@@ -393,7 +408,7 @@
               </form>
             </div>
             <div class="modal-footer">
-              <!--BOTONES REGISTRO MULTA-->
+              <!--BOTONES PAGAR MULTA-->
               <input type="button" class="btn btn-primary" id="btnPagarMulta" name="btnPagarMulta"
                 value="Guardar Cambios" onclick="pagarMulta();" />
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -403,7 +418,57 @@
       </div>
       <!--FIN Modal de PAGAR MULTA-->
 
+       <!--Modal de LISTADO SALDO CONDUCTOR-->
+       <div class="modal" tabindex="-1" role="dialog" id="listadoSaldoConductorModal">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Mostrar listado saldo conductor</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+            <div id="cuerpoModalListadoSaldoConductor" name="cuerpoModalListadoSaldoConductor">
+              <!-- Aqui va la informacion de listado de saldo conductor -->
+            </div>
+            </div>
+            <div class="modal-footer">
+              <!--BOTONES LISTADO SALDO CONDUCTOR-->
+              <input type="button" class="btn btn-primary" id="btnListadoSaldoConductor" name="btnListadoSaldoConductor"
+                value="Mostrar" onclick="mostrarSaldoConductor();" />
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--FIN Modal de LISTADO SALDO CONDUCTOR-->
 
+      <!--Modal de LISTADO PUNTOS CONDUCTOR-->
+      <div class="modal" tabindex="-1" role="dialog" id="listadoPuntosConductorModal">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Mostrar listado puntos conductor</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+            <div id="cuerpoModalListadoPuntosConductor" name="cuerpoModalListadoPuntosConductor">
+              <!-- Aqui va la informacion de listado de saldo conductor -->
+            </div>
+            </div>
+            <div class="modal-footer">
+              <!--BOTONES LISTADO SALDO CONDUCTOR-->
+              <input type="button" class="btn btn-primary" id="btnListadoPuntosConductor" name="btnListadoPuntosConductor"
+                value="Mostrar" onclick="mostrarPuntosConductor();" />
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--FIN Modal de LISTADO PUNTOS CONDUCTOR-->
 
 
 
