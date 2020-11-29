@@ -50,7 +50,7 @@
 
         <div class="form-group">
           <div class="col-md-12">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#altaConductorModal">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#registroMultaModal">
               Registrar Multa
             </button>
           </div>
@@ -58,7 +58,7 @@
 
         <div class="form-group">
           <div class="col-md-12">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#altaConductorModal">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#pagarMultaModal">
               Pagar Multa
             </button>
           </div>
@@ -255,10 +255,9 @@
 
                 <div class="form-group">
                   <!--CAMPO PUESTO GUARDIA CIVIL-->
-                  <label class="col-md-12 control-label" for="txtDireccion">Puesto Guardia Civil</label>
+                  <label class="col-md-12 control-label" for="txtPuesto">Puesto Guardia Civil</label>
                   <div class="col-md-12">
-                    <input id="txtDireccion" name="txtDireccion" type="text" placeholder=""
-                      class="form-control input-md">
+                    <input id="txtPuesto" name="txtPuesto" type="text" placeholder="" class="form-control input-md">
                   </div>
                 </div>
 
@@ -268,7 +267,7 @@
             </div>
             <div class="modal-footer">
               <!--BOTONES GUARDIA CIVIL-->
-              <input type="button" class="btn btn-primary" id="btnAltaConductor" name="btnAltaGuardiaCivil"
+              <input type="button" class="btn btn-primary" id="btnAltaGuardiaCivil" name="btnAltaGuardiaCivil"
                 value="Guardar Cambios" onclick="altaGuardiaCivil();" />
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
             </div>
@@ -277,8 +276,132 @@
       </div>
       <!--FIN Modal de GUARDIA CIVIL-->
 
+      <!--Modal de REGISTRO MULTA-->
+      <div class="modal" tabindex="-1" role="dialog" id="registroMultaModal">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Registro multa</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form class="form-horizontal" name="frmRegistroMulta">
+
+                <div class="form-group">
+                  <!--CAMPO ID MULTA-->
+                  <label class="col-md-12 control-label" for="txtID">ID Multa</label>
+                  <div class="col-md-12">
+                    <input id="txtID" name="txtID" type="text" placeholder="" class="form-control input-md">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <!--CAMPO NIF CONDUCTOR-->
+                  <label class="col-md-12 control-label" for="txtNIFConductor">NIF Conductor</label>
+                  <div class="col-md-12">
+                    <input id="txtNIFConductor" name="txtNIFConductor" type="text" placeholder=""
+                      class="form-control input-md">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <!--CAMPO NIF GUARDIA CIVIL-->
+                  <label class="col-md-12 control-label" for="txtNIFGuardiaCivil">NIF Guardia Civil</label>
+                  <div class="col-md-12">
+                    <input id="txtNIFGuardiaCivil" name="txtNIFGuardiaCivil" type="text" placeholder=""
+                      class="form-control input-md">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <!--CAMPO IMPORTE MULTA-->
+                  <label class="col-md-12 control-label" for="txtImporte">Importe</label>
+                  <div class="col-md-12">
+                    <input id="txtImporte" name="txtImporte" type="text" placeholder="IMPORTE"
+                      class="form-control input-md">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <!--CAMPO DESCRIPCION MULTA-->
+                  <label class="col-md-12 control-label" for="txtDescripcion">Descripcion</label>
+                  <div class="col-md-12">
+                    <input id="txtDescripcion" name="txtDescripcion" type="text" placeholder=""
+                      class="form-control input-md">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <!--CAMPO FECHA MULTA-->
+                  <label class="col-md-12 control-label" for="txtFecha">Fecha</label>
+                  <div class="col-md-12">
+                    <input id="txtFecha" name="txtFecha" type="date" placeholder="" class="form-control input-md">
+                  </div>
+                </div>
 
 
+              </form>
+            </div>
+            <div class="modal-footer">
+              <!--BOTONES REGISTRO MULTA-->
+              <input type="button" class="btn btn-primary" id="btnRegistrarMulta" name="btnRegistrarMulta"
+                value="Guardar Cambios" onclick="registrarMulta();" />
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--FIN Modal de REGISTRO MULTA-->
+
+      <!--Modal de PAGAR MULTA-->
+      <div class="modal" tabindex="-1" role="dialog" id="pagarMultaModal">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Pagar multa</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form class="form-horizontal" name="frmPagarMulta">
+
+                <div class="form-group">
+                  <!--CAMPO ID MULTA-->
+                  <label class="col-md-12 control-label" for="txtID">ID Multa</label>
+                  <div class="col-md-12">
+                    <input id="txtID" name="txtID" type="text" placeholder="" class="form-control input-md">
+                  </div>
+                </div>
+
+
+                <div class="form-group">
+                  <!--CAMPO PAGADA BOOLEAN MULTA-->
+                  <label class="col-md-12 control-label" for="ckeckPagada">Pagada</label>
+                  <div class="col-md-12">
+                    <input id="checkPagada" name="checkPagada" type="checkbox" placeholder=""
+                      class="form-control input-md">
+                  </div>
+                </div>
+
+
+
+
+
+              </form>
+            </div>
+            <div class="modal-footer">
+              <!--BOTONES REGISTRO MULTA-->
+              <input type="button" class="btn btn-primary" id="btnPagarMulta" name="btnPagarMulta"
+                value="Guardar Cambios" onclick="pagarMulta();" />
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--FIN Modal de PAGAR MULTA-->
 
 
 
@@ -293,14 +416,14 @@
     <script type="text/javascript" src="js/codigo.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-      crossorigin="anonymous"></script>
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-      crossorigin="anonymous"></script>
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-      crossorigin="anonymous"></script>
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>
