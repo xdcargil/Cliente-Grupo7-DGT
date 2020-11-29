@@ -12,10 +12,16 @@ function altaConductor() {
 
 
     let oNuevoConductor = new Conductor(sNif, sNombre, sApellido, sDireccion, dFechaCarnet);
-    oDGT.altaConductor(oNuevoConductor);
+    if(oDGT.altaConductor(oNuevoConductor)){
+        alert("Conductor Agregado");
+    }else{
+        alert("El conductor no se a podido agregar");
+    }
 
     $('#altaConductorModal').modal('hide'); //Esta función cierra el modal.
 }
+
+
 
 function altaGuardiaCivil() {
     alert("hola Guardia Civil");

@@ -39,10 +39,10 @@ class DGT {
 
         if (oExisteConductor == null) {
             this.personas.push(oConductor);
+            return true;
         } else {
-            alert("El conductor ya existe");
+            return false;
         }
-
 
     }
 
