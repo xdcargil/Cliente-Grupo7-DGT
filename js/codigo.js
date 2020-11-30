@@ -149,28 +149,35 @@ function imprimirMulta() {
 
 /* MANIPULAR UI */
 
+//Carga los styles cuadno carga la ventana para que aparezcan escondidos los containers
+//de los botones leve y grave
 window.onload = function() {
-    $("#multiCollapseRadios").collapse('hide');
-    $("#multiCollapsePuntos").collapse('hide');
+    document.getElementById("multiCollapseRadios").style.display = "none";
+    document.getElementById("multiCollapsePuntos").style.display = "none";
   };
+
+  //Ocultamos los botones cuando puslsamos el boton de registrar multa
+function ocultarLeveYGrave() {
+    document.getElementById("multiCollapseRadios").style.display = "none";
+    document.getElementById("multiCollapsePuntos").style.display = "none";
+}  
+
+//Oculta grave y muestra leve
 
 function btnLevePulsado() {
     
-    $("#btnLeveRegistraMulta").click(function(){
-
-        $("#multiCollapseRadios").collapse('show');
-        $("#multiCollapsePuntos").collapse('hide');
-      });
-
+   document.getElementById("multiCollapseRadios").style.display="block";
+   document.getElementById("multiCollapsePuntos").style.display="none";
 
 }
 
 
+
+//Oculta leve y muestra grave
+
 function btnGravePulsado() {
-    $("#btnGraveRegistraMulta").click(function(){
-        $("#multiCollapseRadios").collapse('hide');
-        $("#multiCollapsePuntos").collapse('show');
-      });
+    document.getElementById("multiCollapseRadios").style.display="none";
+   document.getElementById("multiCollapsePuntos").style.display="block";
 
    
     }

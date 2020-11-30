@@ -50,7 +50,7 @@
 
         <div class="form-group">
           <div class="col-md-12">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#registroMultaModal">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#registroMultaModal" onclick="ocultarLeveYGrave();">
               Registrar Multa
             </button>
           </div>
@@ -337,16 +337,14 @@
                 </div>
 
                 <p>
-                  <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseRadios" role="button"
-                    aria-expanded="false" aria-controls="multiCollapseRadios" id="btnLeveRegistraMulta" onclick="btnLevePulsado()">Leve</a>
+                  <a class="btn btn-primary"  role="button" id="btnLeveRegistraMulta" onclick="btnLevePulsado();">Leve</a>
 
-                  <a class="btn btn-primary" href="#multiCollapsePuntos" rolle="button" data-toggle="collapse"
-                    aria-expanded="false" aria-controls="multiCollapsePuntos" id="btnGraveRegistraMulta" onclick="btnGravePulsado()">Grave</a>
+                  <a class="btn btn-primary"  rolle="button" id="btnGraveRegistraMulta" onclick="btnGravePulsado();">Grave</a>
                 </p>
 
                 <!--CAMPOS DE TIPO MULTA-->
                 <div class="col-12">
-                  <div class="collapse multi-collapse" id="multiCollapseRadios">
+                  <div class="container-fluid" id="multiCollapseRadios">
                     <div class="card card-body">
                       <p>Bonificada</p>
                       <div class="form-check">
@@ -366,7 +364,7 @@
                 </div>
 
                 <div class="col-12">
-                  <div class="collapse multi-collapse" id="multiCollapsePuntos">
+                  <div class="container-fluid" id="multiCollapsePuntos">
                     <div class="card card-body">
                       <div class="form-group">
                         <!--CAMPO GRAVE PUNTOS MULTA-->
