@@ -167,3 +167,14 @@ function mostrarListadoConductores() {
 
  oImprimir.innerHTML = sContenedorConductores;
 }
+
+/*Listado de Guardia*/ 
+    
+function mostrarListadoGuardiasCiviles() {
+    
+    oDGT.listarGuardiaCivil();
+    let sContenedorGuardia = oDGT.listarGuardiaCivil();
+    let oImprimir =  document.getElementById("cuerpoModalListadoGuardiasCiviles");
+   
+    oImprimir.innerHTML = sContenedorGuardia;
+   }
