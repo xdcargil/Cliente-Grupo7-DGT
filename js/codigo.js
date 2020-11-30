@@ -4,7 +4,7 @@ var oDGT = new DGT();
 
 function altaConductor() {
 
-    let sNif = frmAltaConductor.txtNIF.value.trim();
+    let sNif = parseInt(frmAltaConductor.txtNIF.value.trim());
     let sNombre = frmAltaConductor.txtNombre.value.trim();
     let sApellido = frmAltaConductor.txtApellidos.value.trim();
     let sDireccion = frmAltaConductor.txtDireccion.value.trim();
@@ -30,7 +30,7 @@ function altaConductor() {
 
 function altaGuardiaCivil() {
 
-    let sNif = frmAltaGuardiaCivil.txtNIF.value.trim();
+    let sNif = parseInt(frmAltaGuardiaCivil.txtNIF.value.trim());
     let sNombre = frmAltaGuardiaCivil.txtNombre.value.trim();
     let sApellido = frmAltaGuardiaCivil.txtApellidos.value.trim();
     let sDireccion = frmAltaGuardiaCivil.txtDireccion.value.trim();
@@ -48,10 +48,10 @@ function altaGuardiaCivil() {
     $('#altaGuardiaCivilModal').modal('hide'); //Esta función cierra el modal.
 }
 
-function registrarMulta() {
-    let sIdMulta = frmRegistroMulta.txtID.value.trim();
-    let sNifConductor = frmRegistroMulta.txtNIFConductor.value.trim();
-    let sNifGuardia = frmRegistroMulta.txtNIFGuardiaCivil.value.trim();
+function registrarMulta(){
+    let sIdMulta = parseInt(frmRegistroMulta.txtID.value.trim());
+    let sNifConductor = parseInt(frmRegistroMulta.txtNIFConductor.value.trim());
+    let sNifGuardia = parseInt(frmRegistroMulta.txtNIFGuardiaCivil.value.trim());
     let fImporte = parseFloat(frmRegistroMulta.txtImporte.value.trim());
     let sDescripcion = frmRegistroMulta.txtDescripcion.value.trim();
     let dFechaMulta = new Date(frmRegistroMulta.txtFechaAltaMulta.value);
@@ -86,15 +86,52 @@ function registrarMulta() {
     $('#registroMultaModal').modal('hide');
 }
 
+function pagarMulta() {
+
+    //Recoge los valores de los formularios
+    
+    let iIDMulta = parseInt(frmPagarMulta.txtID.value.trim());
+    let bPagada = frmPagarMulta.checkPagada.checked;
+
+    //Los muestra en consola para ver que los coge bien
+    console.log( "id multa a pagar: "+iIDMulta);
+    console.log("valor del check: "+bPagada);
+    //Busca si existe la multa dentro de la array _multas del objeto oDGT
+    if(oDGT.buscarMulta(iIDMulta)){
+      /*  let multaACambiar= oDGT._multas.find(multa => multa.multa == iIDMulta) */
+      //Si existe, busca de nuevo y guardala en una variable
+      let multaACambiar = oDGT.buscarMulta(iIDMulta);
+      //Si el atributo "pagada" es igual a false, entonces haces =>
+      if(multaACambiar.pagada == false){
+          //Si el checkbox "bPagada" no tiene el valor (checked==true) avisa 
+          //que no ha cambiado nada porque la multa ya tenia el atributo pagada en false
+          if(bPagada==false){
+              alert("No se ha cambiado nada");
+          }
+          else{
+              //Si la multa tenia el atributo "pagada" en false, y el checkbox esta en true,
+              //cambia el atributo "pagada" a true
+            multaACambiar.pagada=bPagada;
+            
+          }
+      }
+      else{
+          //Si el atributo "pagada" es != de false, entonces porque ya esta pagada=>
+          alert("La multa ya está pagada");
+      }
+    }
+    else{
+        //Si la multa no existe, muestra este mensaje
+        alert("La multa no existe");
+    }
+
+
+}
+
 
 function imprimirMulta() {
 
 
     let web = window.open("plantilla.html");
-
-
-
-
-
 
 }
