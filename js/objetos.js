@@ -106,7 +106,7 @@ class DGT {
         return oMulta;
     }
 
-
+    
     delvoverDatosMulta(idMulta){
         //Este metodo sirve para delvover los datos a código y imprimir por pantalla
         let multa = oDGT.buscarMulta(idMulta);

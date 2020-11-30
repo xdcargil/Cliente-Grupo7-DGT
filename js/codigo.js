@@ -129,6 +129,7 @@ function pagarMulta() {
 
 }
 
+
 function imprimirMulta() {
     let idMulta = parseInt(frmImprimirMulta.txtIdMulta.value);
     let resultado = oDGT.delvoverDatosMulta(idMulta);
@@ -144,19 +145,6 @@ function imprimirMulta() {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /* MANIPULAR UI */
@@ -176,6 +164,7 @@ function btnLevePulsado() {
 
 
 }
+
 
 function btnGravePulsado() {
     $("#btnGraveRegistraMulta").click(function(){
