@@ -129,7 +129,6 @@ function pagarMulta() {
 
 }
 
-
 function imprimirMulta() {
     let idMulta = parseInt(frmImprimirMulta.txtIdMulta.value);
     let resultado = oDGT.delvoverDatosMulta(idMulta);
@@ -145,3 +144,48 @@ function imprimirMulta() {
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* MANIPULAR UI */
+
+window.onload = function() {
+    $("#multiCollapseRadios").collapse('hide');
+    $("#multiCollapsePuntos").collapse('hide');
+  };
+
+function btnLevePulsado() {
+    
+    $("#btnLeveRegistraMulta").click(function(){
+
+        $("#multiCollapseRadios").collapse('show');
+        $("#multiCollapsePuntos").collapse('hide');
+      });
+
+
+}
+
+function btnGravePulsado() {
+    $("#btnGraveRegistraMulta").click(function(){
+        $("#multiCollapseRadios").collapse('hide');
+        $("#multiCollapsePuntos").collapse('show');
+      });
+
+   
+    }
+
+   
+
+
