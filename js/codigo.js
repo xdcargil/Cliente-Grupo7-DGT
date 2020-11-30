@@ -4,7 +4,7 @@ var oDGT = new DGT();
 
 function altaConductor() {
 
-    let sNif = frmAltaConductor.txtNIF.value.trim();
+    let sNif = parseInt(frmAltaConductor.txtNIF.value.trim());
     let sNombre = frmAltaConductor.txtNombre.value.trim();
     let sApellido = frmAltaConductor.txtApellidos.value.trim();
     let sDireccion = frmAltaConductor.txtDireccion.value.trim();
@@ -25,7 +25,7 @@ function altaConductor() {
 
 function altaGuardiaCivil() {
 
-    let sNif = frmAltaGuardiaCivil.txtNIF.value.trim();
+    let sNif = parseInt(frmAltaGuardiaCivil.txtNIF.value.trim());
     let sNombre = frmAltaGuardiaCivil.txtNombre.value.trim();
     let sApellido = frmAltaGuardiaCivil.txtApellidos.value.trim();
     let sDireccion = frmAltaGuardiaCivil.txtDireccion.value.trim();
@@ -44,9 +44,9 @@ function altaGuardiaCivil() {
 }
 
 function registrarMulta(){
-    let sIdMulta = frmRegistroMulta.txtID.value.trim();
-    let sNifConductor = frmRegistroMulta.txtNIFConductor.value.trim();
-    let sNifGuardia = frmRegistroMulta.txtNIFGuardiaCivil.value.trim();
+    let sIdMulta = parseInt(frmRegistroMulta.txtID.value.trim());
+    let sNifConductor = parseInt(frmRegistroMulta.txtNIFConductor.value.trim());
+    let sNifGuardia = parseInt(frmRegistroMulta.txtNIFGuardiaCivil.value.trim());
     let fImporte = parseFloat(frmRegistroMulta.txtImporte.value.trim());
     let sDescripcion = frmRegistroMulta.txtDescripcion.value.trim();
     let dFechaMulta = new Date(frmRegistroMulta.txtFechaAltaMulta.value);
