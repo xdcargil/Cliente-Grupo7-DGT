@@ -46,6 +46,18 @@ class DGT {
 
     }
 
+    altaGuardiaCivil(oGuardia){
+        let oExisteGuardia = oDGT._buscarPersona(oGuardia.NIF);
+
+        if (oExisteGuardia == null) {
+            this.personas.push(oGuardia);
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
     _buscarPersona(iNIF) {
 
         let oPersonaExistente = null;
