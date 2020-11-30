@@ -157,4 +157,11 @@ function btnGravePulsado() {
    
     }
 
-   
+/*Listado de Conductores*/ 
+    function listaConductores() {
+        oDGT.listarConductores();
+        let sContenedorConductores = oDGT.listarConductores();
+        let oImprimir =  document.getElementById("cuerpoModalListadoConductores");
+       
+        oImprimir.innerHTML = sContenedorConductores;
+       }
