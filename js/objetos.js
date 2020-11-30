@@ -100,6 +100,12 @@ class DGT {
         return bExito;
     }
 
+    buscarMulta(iIDMulta){
+
+        return this._multas.find(multa=>multa.multa == iIDMulta);
+
+    }
+
 }
 
 // ------------- FIN Clase DGT   -------------
