@@ -133,8 +133,9 @@ function pagarMulta() {
 function imprimirMulta() {
     let idMulta = parseInt(frmImprimirMulta.txtIdMulta.value);
     let resultado = oDGT.delvoverDatosMulta(idMulta);
+
     if(resultado){
-        let web = open("plantilla.html");
+        let web = window.open("plantilla.html");
         let tablaPlantilla = web.document.getElementById("tablaMulta");
         
         tablaPlantilla.innerHTML=resultado;
