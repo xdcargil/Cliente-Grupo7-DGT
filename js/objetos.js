@@ -135,6 +135,35 @@ class DGT {
         }
     }
 
+    /*Listado de Guardia*/ 
+    listarGuardiaCivil(){
+
+        
+        let sTabla = '<table border="1">';
+        // Encabezado de la tabla
+        sTabla += "<thead><tr>";
+        sTabla += "<th>NIF</th><th>Nombre</th>";
+        sTabla += "<th>Apellido</th></th><th>Direccion</th>";
+        sTabla += "<th>Rango</th>";
+        sTabla += "</tr></thead>";
+        
+        let oGuardiaAux = this._personas.filter(persona => persona instanceof GuardiaCivil);
+        
+        if(oGuardiaAux.length > 0){
+            
+            for (let oP of oGuardiaAux) {
+                sTabla += oP.toHTMLRow();
+            }
+            sTabla += "</tbody>";
+            
+             return sTabla;
+        }
+        else{
+            
+           return "No hay Guardia civil";
+        }
+    }
+
 }
 
 // ------------- FIN Clase DGT   -------------
