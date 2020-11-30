@@ -80,3 +80,12 @@ function registrarMulta(){
 
     $('#registroMultaModal').modal('hide');
 }
+
+
+function listaConductores() {
+ oDGT.listarConductores();
+ let sContenedorConductores = oDGT.listarConductores();
+ let oImprimir =  document.getElementById("cuerpoModalListadoConductores");
+
+ oImprimir.innerHTML = sContenedorConductores;
+}
