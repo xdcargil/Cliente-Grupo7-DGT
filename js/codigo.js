@@ -160,7 +160,7 @@ function btnGravePulsado() {
 /*Listado de Conductores*/ 
     
 function mostrarListadoConductores() {
-    alert("Pasa 0");
+    
  oDGT.listarConductores();
  let sContenedorConductores = oDGT.listarConductores();
  let oImprimir =  document.getElementById("cuerpoModalListadoConductores");
