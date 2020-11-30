@@ -80,7 +80,8 @@
 
         <div class="form-group">
           <div class="col-md-12">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#listadoPuntosConductorModal">
+            <button type="button" class="btn btn-primary" data-toggle="modal"
+              data-target="#listadoPuntosConductorModal">
               Listado Puntos Conductor
             </button>
           </div>
@@ -114,7 +115,8 @@
 
         <div class="form-group">
           <div class="col-md-12">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#listadoGuardiasCivilesModal">
+            <button type="button" class="btn btn-primary" data-toggle="modal"
+              data-target="#listadoGuardiasCivilesModal">
               Listado Guardia Civiles
             </button> </div>
         </div>
@@ -334,18 +336,47 @@
                   </div>
                 </div>
 
-                <div class="form-group">
-                  <!--CAMPO LEVE MULTA-->
-                  <label class="col-md-12 control-label" for="txtLeve">Leve</label>
-                  <div class="col-md-12">
-                    <input id="txtFecha" name="txtLeve" type="radio" placeholder="" class="form-control input-md">
+                <p>
+                  <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseRadios" role="button"
+                    aria-expanded="false" aria-controls="multiCollapseRadios">Leve</a>
+
+                  <a class="btn btn-primary" href="#multiCollapsePuntos" rolle="button" data-toggle="collapse"
+                    aria-expanded="false" aria-controls="multiCollapsePuntos">Grave</a>
+                </p>
+
+                <!--CAMPOS DE TIPO MULTA-->
+                <div class="col-12">
+                  <div class="collapse multi-collapse" id="multiCollapseRadios">
+                    <div class="card card-body">
+                      <p>Bonificada</p>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="radioBonificada" id="gridRadios1" value="s">
+                        <label class="form-check-label" for="gridRadios1">
+                          Si
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="radioBonificada" id="gridRadios2" value="n">
+                        <label class="form-check-label" for="gridRadios2">
+                          No
+                        </label>
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <div class="form-group">
-                  <!--CAMPO GRAVE MULTA-->
-                  <label class="col-md-12 control-label" for="txtLeve">Grave</label>
-                  <div class="col-md-12">
-                    <input id="txtFecha" name="txtLeve" type="radio" placeholder="" class="form-control input-md">
+
+                <div class="col-12">
+                  <div class="collapse multi-collapse" id="multiCollapsePuntos">
+                    <div class="card card-body">
+                      <div class="form-group">
+                        <!--CAMPO GRAVE PUNTOS MULTA-->
+                        <label class="col-md-12 control-label" for="txtPuntos">PUNTOS</label>
+                        <div class="col-md-12">
+                          <input id="txtFecha" name="txtPuntos" type="text" placeholder=""
+                            class="form-control input-md">
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
@@ -573,9 +604,9 @@
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title">Mostrar listado Multa</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
             <div class="modal-body">
               <div id="cuerpoModalListadoMulta" name="cuerpoModalListadoMulta">
@@ -608,13 +639,13 @@
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-    </script>
+      </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
       integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
-    </script>
+      </script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
-    </script>
+      </script>
 </body>
 
 </html>
