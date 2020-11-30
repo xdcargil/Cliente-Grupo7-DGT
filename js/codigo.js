@@ -122,3 +122,33 @@ function pagarMulta() {
 
 
 }
+
+
+/* MANIPULAR UI */
+
+window.onload = function() {
+    $("#multiCollapseRadios").collapse('hide');
+    $("#multiCollapsePuntos").collapse('hide');
+  };
+
+function btnLevePulsado() {
+    
+    $("#btnLeveRegistraMulta").click(function(){
+
+        $("#multiCollapseRadios").collapse('show');
+        $("#multiCollapsePuntos").collapse('hide');
+      });
+
+
+}
+
+function btnGravePulsado() {
+    $("#btnGraveRegistraMulta").click(function(){
+        $("#multiCollapseRadios").collapse('hide');
+        $("#multiCollapsePuntos").collapse('show');
+      });
+
+   
+    }
+
+   
