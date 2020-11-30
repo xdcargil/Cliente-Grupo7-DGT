@@ -109,7 +109,7 @@ class DGT {
     /*Listado de Conductores*/ 
     listarConductores(){
 
-       
+        
         let sTabla = '<table border="1">';
         // Encabezado de la tabla
         sTabla += "<thead><tr>";
@@ -117,21 +117,20 @@ class DGT {
         sTabla += "<th>Apellido</th></th><th>Direccion</th>";
         sTabla += "<th>Fecha Carnet</th>";
         sTabla += "</tr></thead>";
-       
-        // Obtenemos array que no tiene productos con 0 unidades
+        
         let oConductorAux = this._personas.filter(persona => persona instanceof Conductor);
         
         if(oConductorAux.length > 0){
-            alert("Pasa IF");
+            
             for (let oP of oConductorAux) {
                 sTabla += oP.toHTMLRow();
             }
             sTabla += "</tbody>";
-            alert("Pasa 5");
+            
              return sTabla;
         }
         else{
-            alert("Pasa Else");
+            
            return "No hay conductores";
         }
     }
