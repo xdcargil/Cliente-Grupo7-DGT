@@ -30,15 +30,15 @@ class Persona {
 
 class DGT {
     constructor() {
-        this.multas = [];
-        this.personas = [];
+        this._multas = [];
+        this._personas = [];
     }
 
     altaConductor(oConductor) {
         let oExisteConductor = oDGT._buscarPersona(oConductor.NIF);
 
         if (oExisteConductor == null) {
-            this.personas.push(oConductor);
+            this._personas.push(oConductor);
             return true;
         } else {
             return false;
@@ -50,7 +50,7 @@ class DGT {
         let oExisteGuardia = oDGT._buscarPersona(oGuardia.NIF);
 
         if (oExisteGuardia == null) {
-            this.personas.push(oGuardia);
+            this._personas.push(oGuardia);
             return true;
         } else {
             return false;
@@ -62,12 +62,43 @@ class DGT {
 
         let oPersonaExistente = null;
 
-        oPersonaExistente = this.personas.find(persona => persona.NIF == iNIF);
+        oPersonaExistente = this._personas.find(persona => persona.NIF == iNIF);
 
         return oPersonaExistente;
     }
 
+    _buscarConductor(iNIF){
+        let oConductorExistente = null;
+        
+        let oConductores=this._personas.filter(persona => persona instanceof Conductor);
+        console.log(oConductores);
+        console.log(iNIF);
+        oConductorExistente = oConductores.find(persona => persona.NIF == iNIF );
+        console.log(oConductorExistente);
+        return oConductorExistente;
+    }
 
+    _buscarGuardia(iNIF){
+        let oGuardiaExistente = null;
+        let oGuardias=this._personas.filter(persona => persona instanceof GuardiaCivil);
+        
+        console.log(oGuardias);
+        oGuardiaExistente = oGuardias.find(persona => persona.NIF == iNIF );
+
+        return oGuardiaExistente;
+    }
+
+    registrarMulta(oMulta){
+        let oMultaExistente=this._multas.find(oMult => oMult.multa == oMulta.multa);
+        let bExito=false;
+
+        if(oMultaExistente===undefined){
+            this._multas.push(oMulta);
+            bExito=true;
+        }
+
+        return bExito;
+    }
 
 }
 
@@ -128,12 +159,12 @@ class GuardiaCivil extends Persona { //Clase GuardiaCivil hereda de Persona
 
 
 // ------------- Clase Multa  -------------
-function Multa(idMulta, sNIFConductor, sNIFGuardia, dImporte, bPagada, sDescripcion, dFecha) { //Clase Multa
+function Multa(idMulta, sNIFConductor, sNIFGuardia, fImporte, sDescripcion, dFecha) { //Clase Multa
     this.multa = idMulta;
     this.NIFConductor = sNIFConductor;
     this.NIFGuardia = sNIFGuardia;
-    this.importe = dImporte;
-    this.pagada = bPagada;
+    this.importe = fImporte;
+    this.pagada = false;
     this.descripcion = sDescripcion;
     this.fecha = dFecha;
 }
@@ -156,8 +187,8 @@ Multa.prototype.toHTMLRow = function () { //Metodo de la clase Multa
 
 
 // ------------- Clase Leve hereda de MULTA  -------------
-function Leve(idMulta, sNIFConductor, sNIFGuardia, dImporte, bPagada, sDescripcion, dFecha, bBonificada) { //Clase leve hereda de Multa
-    Multa.call(this, idMulta, sNIFConductor, sNIFGuardia, dImporte, bPagada, sDescripcion, dFecha);
+function Leve(idMulta, sNIFConductor, sNIFGuardia, dImporte, sDescripcion, dFecha, bBonificada) { //Clase leve hereda de Multa
+    Multa.call(this, idMulta, sNIFConductor, sNIFGuardia, dImporte, sDescripcion, dFecha);
     this.bonificada = bBonificada;
 
 };
@@ -187,8 +218,8 @@ Leve.prototype.toHTMLRow = function () {
 
 
 // ------------- Clase Grave hereda de MULTA  -------------
-function Grave(idMulta, sNIFConductor, sNIFGuardia, dImporte, bPagada, sDescripcion, dFecha, iPuntos) {
-    Multa.call(this, idMulta, sNIFConductor, sNIFGuardia, dImporte, bPagada, sDescripcion, dFecha);
+function Grave(idMulta, sNIFConductor, sNIFGuardia, dImporte, sDescripcion, dFecha, iPuntos) {
+    Multa.call(this, idMulta, sNIFConductor, sNIFGuardia, dImporte, sDescripcion, dFecha);
     this.puntos = iPuntos;
 
 };
