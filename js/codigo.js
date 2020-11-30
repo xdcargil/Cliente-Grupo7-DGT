@@ -10,7 +10,8 @@ function altaConductor() {
     let sDireccion = frmAltaConductor.txtDireccion.value.trim();
     let dFechaCarnet = new Date(frmAltaConductor.dFechaCarnet.value);
 
-    if (sNif.length && sNombre.length && sApellido.length && sDireccion.length > 0) {
+    if (sNif && sNombre && sApellido && sDireccion != NaN && sNif  && sNombre && sApellido && sDireccion.length > 0) {
+
         let oNuevoConductor = new Conductor(sNif, sNombre, sApellido, sDireccion, dFechaCarnet);
         if (oDGT.altaConductor(oNuevoConductor)) {
             alert("Conductor Agregado");
@@ -130,8 +131,16 @@ function pagarMulta() {
 
 
 function imprimirMulta() {
+    let idMulta = parseInt(frmImprimirMulta.txtIdMulta.value);
+    let resultado = oDGT.delvoverDatosMulta(idMulta);
+    if(resultado){
+        let web = open("plantilla.html");
+        let tablaPlantilla = web.document.getElementById("tablaMulta");
+        
+        tablaPlantilla.innerHTML=resultado;
 
-
-    let web = window.open("plantilla.html");
+    }else{
+        alert("no se a encontrado la multa");
+    }
 
 }
