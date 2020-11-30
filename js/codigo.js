@@ -127,26 +127,20 @@ function pagarMulta() {
 /* MANIPULAR UI */
 
 window.onload = function() {
-    $("#multiCollapseRadios").collapse('hide');
-    $("#multiCollapsePuntos").collapse('hide');
+    document.getElementById("multiCollapseRadios").style.display = "none";
+    document.getElementById("multiCollapsePuntos").style.display = "none";
   };
 
 function btnLevePulsado() {
     
-    $("#btnLeveRegistraMulta").click(function(){
-
-        $("#multiCollapseRadios").collapse('show');
-        $("#multiCollapsePuntos").collapse('hide');
-      });
-
+   document.getElementById("multiCollapseRadios").style.display="block";
+   document.getElementById("multiCollapsePuntos").style.display="none";
 
 }
 
 function btnGravePulsado() {
-    $("#btnGraveRegistraMulta").click(function(){
-        $("#multiCollapseRadios").collapse('hide');
-        $("#multiCollapsePuntos").collapse('show');
-      });
+    document.getElementById("multiCollapseRadios").style.display="none";
+   document.getElementById("multiCollapsePuntos").style.display="block";
 
    
     }
