@@ -126,10 +126,20 @@ function pagarMulta() {
 
 /* MANIPULAR UI */
 
+//Carga los styles cuadno carga la ventana para que aparezcan escondidos los containers
+//de los botones leve y grave
 window.onload = function() {
     document.getElementById("multiCollapseRadios").style.display = "none";
     document.getElementById("multiCollapsePuntos").style.display = "none";
   };
+
+  //Ocultamos los botones cuando puslsamos el boton de registrar multa
+function ocultarLeveYGrave() {
+    document.getElementById("multiCollapseRadios").style.display = "none";
+    document.getElementById("multiCollapsePuntos").style.display = "none";
+}  
+
+//Oculta grave y muestra leve
 
 function btnLevePulsado() {
     
@@ -137,6 +147,8 @@ function btnLevePulsado() {
    document.getElementById("multiCollapsePuntos").style.display="none";
 
 }
+
+//Oculta leve y muestra grave
 
 function btnGravePulsado() {
     document.getElementById("multiCollapseRadios").style.display="none";
