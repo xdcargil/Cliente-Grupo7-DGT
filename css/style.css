@@ -25,3 +25,9 @@ h4{
     text-align: center;
     width: 100%;
 }
+
+table,td{
+    border: solid 1px black;
+    padding: 15px;
+    margin-top: 12%;
+}
