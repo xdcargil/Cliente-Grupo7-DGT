@@ -34,7 +34,7 @@ function altaGuardiaCivil() {
 
     let oNuevoGuardiaCivil = new GuardiaCivil(sNif, sNombre, sApellido, sDireccion, sPuesto);
 
-    if (oDGT.altaConductor(oNuevoGuardiaCivil)) {
+    if (oDGT.altaGuardiaCivil(oNuevoGuardiaCivil)) {
         alert("Guardia Agregado");
     } else {
         alert("El guardia no se ha podido agregar");
