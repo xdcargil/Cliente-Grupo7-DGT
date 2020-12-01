@@ -101,8 +101,23 @@ class DGT {
     }
 
     buscarMulta(iIDMulta){
+        let oMulta =  null;
+        oMulta= this._multas.find(multa=>multa.multa == iIDMulta);
+        return oMulta;
+    }
 
-        return this._multas.find(multa=>multa.multa == iIDMulta);
+    
+    delvoverDatosMulta(idMulta){
+        //Este metodo sirve para delvover los datos a código y imprimir por pantalla
+        let multa = oDGT.buscarMulta(idMulta);
+        let resultado = "";
+        if(multa!=null){
+            resultado = multa.toHTMLRow();
+           return resultado;
+        }else{
+            return false;
+        }
+
 
     }
 

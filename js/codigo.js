@@ -1,7 +1,6 @@
 "use strict";
 var oDGT = new DGT();
 
-
 function altaConductor() {
 
     let sNif = parseInt(frmAltaConductor.txtNIF.value.trim());
@@ -10,15 +9,21 @@ function altaConductor() {
     let sDireccion = frmAltaConductor.txtDireccion.value.trim();
     let dFechaCarnet = new Date(frmAltaConductor.dFechaCarnet.value);
 
+    if (sNif && sNombre && sApellido && sDireccion != NaN && sNif && sNombre && sApellido && sDireccion.length > 0) {
 
-    let oNuevoConductor = new Conductor(sNif, sNombre, sApellido, sDireccion, dFechaCarnet);
-    if (oDGT.altaConductor(oNuevoConductor)) {
-        alert("Conductor Agregado");
+        let oNuevoConductor = new Conductor(sNif, sNombre, sApellido, sDireccion, dFechaCarnet);
+        if (oDGT.altaConductor(oNuevoConductor)) {
+            alert("Conductor Agregado");
+            $('#altaConductorModal').modal('hide'); //Esta función cierra el modal.
+
+        } else {
+            alert("El conductor no se ha podido agregar");
+        }
+
+
     } else {
-        alert("El conductor no se ha podido agregar");
+        alert("rellene todos los campos");
     }
-
-    $('#altaConductorModal').modal('hide'); //Esta función cierra el modal.
 }
 
 
@@ -43,40 +48,40 @@ function altaGuardiaCivil() {
     $('#altaGuardiaCivilModal').modal('hide'); //Esta función cierra el modal.
 }
 
-function registrarMulta(){
+function registrarMulta() {
     let sIdMulta = parseInt(frmRegistroMulta.txtID.value.trim());
     let sNifConductor = parseInt(frmRegistroMulta.txtNIFConductor.value.trim());
     let sNifGuardia = parseInt(frmRegistroMulta.txtNIFGuardiaCivil.value.trim());
     let fImporte = parseFloat(frmRegistroMulta.txtImporte.value.trim());
     let sDescripcion = frmRegistroMulta.txtDescripcion.value.trim();
     let dFechaMulta = new Date(frmRegistroMulta.txtFechaAltaMulta.value);
-    
-    if(oDGT._buscarConductor(sNifConductor)!=null && oDGT._buscarGuardia(sNifGuardia)!=null){
-        if(frmRegistroMulta.txtPuntos.value.trim().length>0){
+
+    if (oDGT._buscarConductor(sNifConductor) != null && oDGT._buscarGuardia(sNifGuardia) != null) {
+        if (frmRegistroMulta.txtPuntos.value.trim().length > 0) {
             //alta grave
-            let iPuntos=parseInt(frmRegistroMulta.txtPuntos.value.trim());
-            if(iPuntos>=1 && iPuntos<=15){
-                
-                 let oGrave=new Grave(sIdMulta,sNifConductor,sNifGuardia,fImporte,sDescripcion,dFechaMulta,iPuntos);
-                 oDGT.registrarMulta(oGrave)?alert("Se ha registrado la multa"):alert("No se ha podido registrar la multa");
-    
-            }else{
+            let iPuntos = parseInt(frmRegistroMulta.txtPuntos.value.trim());
+            if (iPuntos >= 1 && iPuntos <= 15) {
+
+                let oGrave = new Grave(sIdMulta, sNifConductor, sNifGuardia, fImporte, sDescripcion, dFechaMulta, iPuntos);
+                oDGT.registrarMulta(oGrave) ? alert("Se ha registrado la multa") : alert("No se ha podido registrar la multa");
+
+            } else {
                 alert("Error al introducir los puntos");
             }
-            
-        }else{
+
+        } else {
             //alta leve
-            let bBonificada=(frmRegistroMulta.radioBonificada.value=="s")?true:false;
-            fImporte=bBonificada?fImporte*0.75:fImporte;
-    
-            let oLeve=new Leve(sIdMulta,sNifConductor,sNifGuardia,fImporte,sDescripcion,dFechaMulta,bBonificada);
-    
-            oDGT.registrarMulta(oLeve)?alert("Se ha registrado la multa"):alert("No se ha podido registrar la multa");
+            let bBonificada = (frmRegistroMulta.radioBonificada.value == "s") ? true : false;
+            fImporte = bBonificada ? fImporte * 0.75 : fImporte;
+
+            let oLeve = new Leve(sIdMulta, sNifConductor, sNifGuardia, fImporte, sDescripcion, dFechaMulta, bBonificada);
+
+            oDGT.registrarMulta(oLeve) ? alert("Se ha registrado la multa") : alert("No se ha podido registrar la multa");
         }
-    }else{
+    } else {
         alert("Error al validar algún NIF");
     }
-    
+
 
     $('#registroMultaModal').modal('hide');
 }
@@ -84,38 +89,38 @@ function registrarMulta(){
 function pagarMulta() {
 
     //Recoge los valores de los formularios
-    
+
     let iIDMulta = parseInt(frmPagarMulta.txtID.value.trim());
     let bPagada = frmPagarMulta.checkPagada.checked;
 
     //Los muestra en consola para ver que los coge bien
-    console.log( "id multa a pagar: "+iIDMulta);
-    console.log("valor del check: "+bPagada);
+    console.log("id multa a pagar: " + iIDMulta);
+    console.log("valor del check: " + bPagada);
     //Busca si existe la multa dentro de la array _multas del objeto oDGT
-    if(oDGT.buscarMulta(iIDMulta)){
-      /*  let multaACambiar= oDGT._multas.find(multa => multa.multa == iIDMulta) */
-      //Si existe, busca de nuevo y guardala en una variable
-      let multaACambiar = oDGT.buscarMulta(iIDMulta);
-      //Si el atributo "pagada" es igual a false, entonces haces =>
-      if(multaACambiar.pagada == false){
-          //Si el checkbox "bPagada" no tiene el valor (checked==true) avisa 
-          //que no ha cambiado nada porque la multa ya tenia el atributo pagada en false
-          if(bPagada==false){
-              alert("No se ha cambiado nada");
-          }
-          else{
-              //Si la multa tenia el atributo "pagada" en false, y el checkbox esta en true,
-              //cambia el atributo "pagada" a true
-            multaACambiar.pagada=bPagada;
-            
-          }
-      }
-      else{
-          //Si el atributo "pagada" es != de false, entonces porque ya esta pagada=>
-          alert("La multa ya está pagada");
-      }
+    if (oDGT.buscarMulta(iIDMulta)) {
+        /*  let multaACambiar= oDGT._multas.find(multa => multa.multa == iIDMulta) */
+        //Si existe, busca de nuevo y guardala en una variable
+        let multaACambiar = oDGT.buscarMulta(iIDMulta);
+        //Si el atributo "pagada" es igual a false, entonces haces =>
+        if (multaACambiar.pagada == false) {
+            //Si el checkbox "bPagada" no tiene el valor (checked==true) avisa 
+            //que no ha cambiado nada porque la multa ya tenia el atributo pagada en false
+            if (bPagada == false) {
+                alert("No se ha cambiado nada");
+            }
+            else {
+                //Si la multa tenia el atributo "pagada" en false, y el checkbox esta en true,
+                //cambia el atributo "pagada" a true
+                multaACambiar.pagada = bPagada;
+
+            }
+        }
+        else {
+            //Si el atributo "pagada" es != de false, entonces porque ya esta pagada=>
+            alert("La multa ya está pagada");
+        }
     }
-    else{
+    else {
         //Si la multa no existe, muestra este mensaje
         alert("La multa no existe");
     }
@@ -124,57 +129,82 @@ function pagarMulta() {
 }
 
 
+function imprimirMulta() {
+    let idMulta = parseInt(frmImprimirMulta.txtIdMulta.value);
+    let resultado = oDGT.delvoverDatosMulta(idMulta);
+
+    if (resultado) {
+        let web = open("plantilla.html");
+        web.onload = function(){
+            web.document.getElementById("tablaMulta").innerHTML = resultado;
+
+          };
+
+    } else {
+        alert("no se a encontrado la multa");
+    }
+
+}
+
+
 /* MANIPULAR UI */
 
 //Carga los styles cuadno carga la ventana para que aparezcan escondidos los containers
 //de los botones leve y grave
-window.onload = function() {
+/*window.onload = function () {
     document.getElementById("multiCollapseRadios").style.display = "none";
     document.getElementById("multiCollapsePuntos").style.display = "none";
-  };
+};
 
-  //Ocultamos los botones cuando puslsamos el boton de registrar multa
+//Ocultamos los botones cuando puslsamos el boton de registrar multa
 function ocultarLeveYGrave() {
     document.getElementById("multiCollapseRadios").style.display = "none";
     document.getElementById("multiCollapsePuntos").style.display = "none";
-}  
+}
 
 //Oculta grave y muestra leve
 
 function btnLevePulsado() {
-    
-   document.getElementById("multiCollapseRadios").style.display="block";
-   document.getElementById("multiCollapsePuntos").style.display="none";
+
+    document.getElementById("multiCollapseRadios").style.display = "block";
+    document.getElementById("multiCollapsePuntos").style.display = "none";
 
 }
+
 
 //Oculta leve y muestra grave
 
 function btnGravePulsado() {
-    document.getElementById("multiCollapseRadios").style.display="none";
-   document.getElementById("multiCollapsePuntos").style.display="block";
+    document.getElementById("multiCollapseRadios").style.display = "none";
+    document.getElementById("multiCollapsePuntos").style.display = "block";
 
-   
-    }
+}*/
+
+
+
+
+
+
+
 
 /*Listado de Conductores*/ 
     
 function mostrarListadoConductores() {
     
- oDGT.listarConductores();
- let sContenedorConductores = oDGT.listarConductores();
- let oImprimir =  document.getElementById("cuerpoModalListadoConductores");
-
- oImprimir.innerHTML = sContenedorConductores;
-}
-
-/*Listado de Guardia*/ 
-    
-function mostrarListadoGuardiasCiviles() {
-    
-    oDGT.listarGuardiaCivil();
-    let sContenedorGuardia = oDGT.listarGuardiaCivil();
-    let oImprimir =  document.getElementById("cuerpoModalListadoGuardiasCiviles");
+    oDGT.listarConductores();
+    let sContenedorConductores = oDGT.listarConductores();
+    let oImprimir =  document.getElementById("cuerpoModalListadoConductores");
    
-    oImprimir.innerHTML = sContenedorGuardia;
+    oImprimir.innerHTML = sContenedorConductores;
    }
+   
+   /*Listado de Guardia*/ 
+       
+   function mostrarListadoGuardiasCiviles() {
+       
+       oDGT.listarGuardiaCivil();
+       let sContenedorGuardia = oDGT.listarGuardiaCivil();
+       let oImprimir =  document.getElementById("cuerpoModalListadoGuardiasCiviles");
+      
+       oImprimir.innerHTML = sContenedorGuardia;
+      }

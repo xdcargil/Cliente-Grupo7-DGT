@@ -596,31 +596,43 @@
       </div>
       <!--FIN Modal de LISTADO GUARDIAS CIVILES-->
 
-      <!--Modal de LISTADO MULTA-->
-      <div class="modal" tabindex="-1" role="dialog" id="listadoMultaModal">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Mostrar listado Multa</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <div id="cuerpoModalListadoMulta" name="cuerpoModalListadoMulta">
-                <!-- Aqui va la informacion de listado de saldo conductor -->
+         <!--Modal de LISTADO MULTA-->
+         <div class="modal" tabindex="-1" role="dialog" id="listadoMultaModal">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Mostrar listado Multa</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
               </div>
-            </div>
-            <div class="modal-footer">
-              <!--BOTONES LISTADO IMPRIMIR MULTA-->
-              <input type="button" class="btn btn-primary" id="btnListadoMulta" name="btnListadoMulta" value="Mostrar"
-                onclick="mostrarImprimirMulta();" />
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+              <div class="modal-body">
+                <div id="cuerpoModalListadoMulta" name="cuerpoModalListadoMulta">
+
+                  <form class="form-horizontal" name="frmImprimirMulta">
+
+                    <div class="form-group">
+                      <!--CAMPO ID MULTA-->
+                      <label class="col-md-12 control-label" for="txtIdMulta">ID Multa</label>
+                      <div class="col-md-12">
+                        <input id="txtIdMulta" name="txtIdMulta" type="text" placeholder="" class="form-control input-md">
+                      </div>
+                    </div>
+    
+  
+    
+                  </form>               
+                 </div>
+              </div>
+              <div class="modal-footer">
+                <!--BOTONES LISTADO IMPRIMIR MULTA-->
+                <input type="button" class="btn btn-primary" id="btnListadoMulta" name="btnListadoMulta" value="Mostrar" onclick="imprimirMulta();"/>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <!--FIN Modal de LISTADO MULTA-->
+        <!--FIN Modal de LISTADO MULTA-->
 
 
 
