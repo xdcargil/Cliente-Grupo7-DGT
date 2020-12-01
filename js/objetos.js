@@ -154,6 +154,7 @@ class DGT {
     listarConductores() {
 
 
+
         let sTabla = '<table border="1">';
         // Encabezado de la tabla
         sTabla += "<thead><tr>";
@@ -207,6 +208,40 @@ class DGT {
 
             return "No hay Guardia civil";
         }
+    }
+
+    listadoMultasPorFecha(dFechaIni, dFechaFin) {
+        let oListaMultas = this._multas.filter(oMul => oMul.fecha.getTime() >= dFechaIni.getTime() && oMul.fecha.getTime() <= dFechaFin.getTime());
+        let sTabla="";
+
+        if (oListaMultas.length > 0) {
+
+            sTabla = '<table border="1">';
+
+            // Encabezado de la tabla
+            sTabla += "<thead><tr>";
+            sTabla += "<th>ID Multa</th><th>Fecha</th>";
+            sTabla += "<th>Importe</th>";
+            sTabla += "</tr></thead><tbody>";
+
+            // array de multas entre las fechas dadas
+
+            let sumaTotal = 0;
+
+            for (let oM of oListaMultas) {
+                sTabla += oM._ListadoImporte();
+                sumaTotal += oM.importe;
+            }
+
+            sTabla += `<tr><td colspan="2"> Importe total </td><td>${sumaTotal}</td></tr>`;
+
+        } else {
+            sTabla += "<h5 class='text-danger'>¡No se han encontrado multas entre ese rango de Fechas!</h5>";
+        }
+
+        sTabla += "</tbody>";
+
+        return sTabla;
     }
 
     listarMultasPorGuardia(){
@@ -347,6 +382,16 @@ Multa.prototype.toHTMLRow = function () { //Metodo de la clase Multa
     sFila += "<td>" + this.descripcion + "</td>";
     sFila += "<td>" + this.fecha + "</td>";
 
+    sFila += "</tr>";
+
+    return sFila;
+}
+
+Multa.prototype._ListadoImporte = function () {
+    let sFila = "<tr>";
+    sFila += "<td>" + this.multa + "</td>";
+    sFila += "<td>" + `${this.fecha.getDate()}/${this.fecha.getMonth() + 1}/${this.fecha.getFullYear()}` + "</td>";
+    sFila += "<td>" + this.importe + "</td>";
     sFila += "</tr>";
 
     return sFila;
