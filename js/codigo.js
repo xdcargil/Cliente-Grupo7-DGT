@@ -1,6 +1,24 @@
 "use strict";
 var oDGT = new DGT();
 
+/*Objetos para prueba*/
+var oConductor1 = new Conductor("1A","Conductor1","Apellido1 Apellido2","Calle1",new Date());
+var oConductor2 = new Conductor("2A","Conductor2","Apellido1 Apellido2","Calle2",new Date());
+var oGuardia1 = new GuardiaCivil("1B","Guardia1","Apellido1, Apellido2","cuartel1","puestoGuardia");
+var oGuardia2 = new GuardiaCivil("2B","Guardia2","Apellido1, Apellido2","cuartel1","puestoGuardia");
+
+var oMultaPrueba = new Multa(1,"1A","1B",25.5,"Multa de prueba weon",new Date());
+
+oDGT.altaConductor(oConductor1);
+oDGT.altaConductor(oConductor2);
+oDGT.altaGuardiaCivil(oGuardia1);
+oDGT.altaGuardiaCivil(oGuardia2);
+oDGT._multas.push(oMultaPrueba);
+
+
+
+/*---------------FIN OBJETOS PRUEBA----------*/
+
 function altaConductor() {
 
     let sNif = frmAltaConductor.txtNIF.value.trim();
@@ -177,12 +195,16 @@ function imprimirMulta() {
     resultado += oDGT.delvoverDatosMulta(idMulta);
 
     if (resultado) {
-        let web = open("plantilla.html");
-        web.onload = function () {
+        let ventanaImprimirMulta = open("plantilla.html");
+         ventanaImprimirMulta.onload = function () {
 
-            web.document.getElementById("tablaMulta").innerHTML = resultado;
+             web.document.getElementById("tablaMulta").innerHTML = resultado; 
+            
 
-        };
+        } 
+
+
+
 
     } else {
         alert("no se a encontrado la multa");
@@ -233,11 +255,7 @@ function limpiarModal() {
 /*LISTADOS*/
 
 
-/*Listado de Conductores*/
 
-
-
-/*Listado de Guardia*/
 
 
 
