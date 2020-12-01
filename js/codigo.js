@@ -26,7 +26,18 @@ function altaConductor() {
     }
 }
 
+function mostrarPuntosConductor() {
 
+    if (oDGT.PuntosConductor() != 1) {
+        let div = document.getElementById("cuerpoModalListadoPuntosConductor");
+        div.innerHTML = "<table id='tablaPuntosConductor'><tr><th>NIF Conductor</th><th>Puntos Conductor</th></tr><table>";
+        document.getElementById("tablaPuntosConductor").innerHTML += oDGT.PuntosConductor();
+    } else {
+        document.getElementById("cuerpoModalListadoPuntosConductor").innerHTML = "No hay multas";
+    }
+
+
+}
 
 function altaGuardiaCivil() {
 
@@ -187,14 +198,14 @@ function btnGravePulsado() {
 }
 
 //Limpia los modales cuando se clickea en cerrar de cualquier modal
-function limpiarModal(){
-  let inputs=document.getElementsByTagName('input');
-  for (let index = 0; index < inputs.length; index++) {
-      if (inputs[index].type=="text") {
-          inputs[index].value="";
-      }
-      
-  }
+function limpiarModal() {
+    let inputs = document.getElementsByTagName('input');
+    for (let index = 0; index < inputs.length; index++) {
+        if (inputs[index].type == "text") {
+            inputs[index].value = "";
+        }
+
+    }
 }
 
 
@@ -203,16 +214,32 @@ function limpiarModal(){
 
 /*Listado de Conductores*/
 
+
+
+/*Listado de Guardia*/
+
+
+
+
+function mostrarMultasGuardia() {
+
+
+    let sContenedorMultasPorGuardia = oDGT.listarMultasPorGuardia();
+    let oImprimir = document.getElementById("cuerpoModalListadoMultasGuardia");
+    oImprimir.innerHTML = sContenedorMultasPorGuardia;
+
+
+}
+
+
 function mostrarListadoConductores() {
 
-   
     let sContenedorConductores = oDGT.listarConductores();
     let oImprimir = document.getElementById("cuerpoModalListadoConductores");
 
     oImprimir.innerHTML = sContenedorConductores;
 }
 
-/*Listado de Guardia*/
 
 function mostrarListadoGuardiasCiviles() {
 
@@ -220,15 +247,4 @@ function mostrarListadoGuardiasCiviles() {
     let oImprimir = document.getElementById("cuerpoModalListadoGuardiasCiviles");
 
     oImprimir.innerHTML = sContenedorGuardia;
-}
-
-
-function mostrarMultasGuardia() {
-    
-
-    let sContenedorMultasPorGuardia = oDGT.listarMultasPorGuardia();
-    let oImprimir =  document.getElementById("cuerpoModalListadoMultasGuardia");
-    oImprimir.innerHTML= sContenedorMultasPorGuardia;
-
-
 }

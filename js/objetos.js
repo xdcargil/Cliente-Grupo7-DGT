@@ -46,7 +46,7 @@ class DGT {
 
     }
 
-    altaGuardiaCivil(oGuardia){
+    altaGuardiaCivil(oGuardia) {
         let oExisteGuardia = oDGT._buscarPersona(oGuardia.NIF);
 
         if (oExisteGuardia == null) {
@@ -67,64 +67,93 @@ class DGT {
         return oPersonaExistente;
     }
 
-    _buscarConductor(iNIF){
+    _buscarConductor(iNIF) {
         let oConductorExistente = null;
-        
-        let oConductores=this._personas.filter(persona => persona instanceof Conductor);
+
+        let oConductores = this._personas.filter(persona => persona instanceof Conductor);
         console.log(oConductores);
         console.log(iNIF);
-        oConductorExistente = oConductores.find(persona => persona.NIF == iNIF );
+        oConductorExistente = oConductores.find(persona => persona.NIF == iNIF);
         console.log(oConductorExistente);
         return oConductorExistente;
     }
 
-    _buscarGuardia(iNIF){
+    _buscarGuardia(iNIF) {
         let oGuardiaExistente = null;
-        let oGuardias=this._personas.filter(persona => persona instanceof GuardiaCivil);
-        
+        let oGuardias = this._personas.filter(persona => persona instanceof GuardiaCivil);
+
         console.log(oGuardias);
-        oGuardiaExistente = oGuardias.find(persona => persona.NIF == iNIF );
+        oGuardiaExistente = oGuardias.find(persona => persona.NIF == iNIF);
 
         return oGuardiaExistente;
     }
 
-    registrarMulta(oMulta){
-        let oMultaExistente=this._multas.find(oMult => oMult.multa == oMulta.multa);
-        let bExito=false;
+    registrarMulta(oMulta) {
+        let oMultaExistente = this._multas.find(oMult => oMult.multa == oMulta.multa);
+        let bExito = false;
 
-        if(oMultaExistente===undefined){
+        if (oMultaExistente === undefined) {
             this._multas.push(oMulta);
-            bExito=true;
+            bExito = true;
         }
 
         return bExito;
     }
 
-    buscarMulta(iIDMulta){
-        let oMulta =  null;
-        oMulta= this._multas.find(multa=>multa.multa == iIDMulta);
+    buscarMulta(iIDMulta) {
+        let oMulta = null;
+        oMulta = this._multas.find(multa => multa.multa == iIDMulta);
         return oMulta;
     }
 
-    
-    delvoverDatosMulta(idMulta){
+
+    delvoverDatosMulta(idMulta) {
         //Este metodo sirve para delvover los datos a código y imprimir por pantalla
         let multa = oDGT.buscarMulta(idMulta);
         let resultado = "";
-        if(multa!=null){
+        if (multa != null) {
             resultado = multa.toHTMLRow();
-           return resultado;
-        }else{
+            return resultado;
+        } else {
             return false;
         }
 
 
     }
+    PuntosConductor() {
+        /*listadoPuntosConductor –Genera  un  
+         * listado  con  los puntos  de  sanción  de  cada conductor. 
+         *  En  el  listado  aparecerá  el  NIF  y  el  total  de  puntos  de  
+         * cada  conductor con multas graves. 
+         * Los conductores sin multas graves no aparecerán en el listado. */
 
-    /*Listado de Conductores*/ 
-    listarConductores(){
 
-        
+        let aConductores = this._personas.filter(persona => persona instanceof Conductor);
+        let aMultasGraves = this._multas.filter(multa => multa instanceof Grave);
+        let resultadoConductor = "";
+        aConductores.forEach(conductor => {
+            aMultasGraves.forEach(multa => {
+                if(conductor.NIF == multa.NIFConductor){
+                    resultadoConductor += "<tr>";
+                    resultadoConductor += "<td>" + conductor.NIF + "</td>";
+                    resultadoConductor += "<td>" + multa.puntos + "</td>";
+                    resultadoConductor += "</tr>";
+            
+                }
+            });
+        });
+        if(resultadoConductor.length>0){
+            return resultadoConductor;
+        }else{
+            return 1; //1 es igual a no hay multas
+        }
+
+    }
+
+    /*Listado de Conductores*/
+    listarConductores() {
+
+
         let sTabla = '<table border="1">';
         // Encabezado de la tabla
         sTabla += "<thead><tr>";
@@ -132,29 +161,29 @@ class DGT {
         sTabla += "<th>Apellido</th></th><th>Direccion</th>";
         sTabla += "<th>Fecha Carnet</th>";
         sTabla += "</tr></thead>";
-        
+
         let oConductorAux = this._personas.filter(persona => persona instanceof Conductor);
-        
-        if(oConductorAux.length > 0){
-            
+
+        if (oConductorAux.length > 0) {
+
             for (let oP of oConductorAux) {
                 sTabla += oP.toHTMLRow();
               
             }
             sTabla += "</tbody>";
-            
-             return sTabla;
+
+            return sTabla;
         }
-        else{
-            
-           return "No hay conductores";
+        else {
+
+            return "No hay conductores";
         }
     }
 
-    /*Listado de Guardia*/ 
-    listarGuardiaCivil(){
+    /*Listado de Guardia*/
+    listarGuardiaCivil() {
 
-        
+
         let sTabla = '<table border="1">';
         // Encabezado de la tabla
         sTabla += "<thead><tr>";
@@ -162,21 +191,21 @@ class DGT {
         sTabla += "<th>Apellido</th></th><th>Direccion</th>";
         sTabla += "<th>Rango</th>";
         sTabla += "</tr></thead>";
-        
+
         let oGuardiaAux = this._personas.filter(persona => persona instanceof GuardiaCivil);
-        
-        if(oGuardiaAux.length > 0){
-            
+
+        if (oGuardiaAux.length > 0) {
+
             for (let oP of oGuardiaAux) {
                 sTabla += oP.toHTMLRow();
             }
             sTabla += "</tbody>";
-            
-             return sTabla;
+
+            return sTabla;
         }
-        else{
-            
-           return "No hay Guardia civil";
+        else {
+
+            return "No hay Guardia civil";
         }
     }
 
