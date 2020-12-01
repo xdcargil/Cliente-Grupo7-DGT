@@ -131,11 +131,13 @@ function pagarMulta() {
 
 function imprimirMulta() {
     let idMulta = parseInt(frmImprimirMulta.txtIdMulta.value);
-    let resultado = oDGT.delvoverDatosMulta(idMulta);
+    let resultado = "<tr><th>IDMulta</th><th>NIF Conductor</th><th>NIF Guardia</th><th>Importe</th><th>Pagada</th><th>Desripción</th><th>Fecha</th><th>Bonificada</th></tr>";
+     resultado += oDGT.delvoverDatosMulta(idMulta);
 
     if (resultado) {
         let web = open("plantilla.html");
         web.onload = function(){
+        
             web.document.getElementById("tablaMulta").innerHTML = resultado;
 
           };
