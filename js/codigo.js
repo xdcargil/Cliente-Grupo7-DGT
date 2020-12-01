@@ -138,6 +138,27 @@ function pagarMulta() {
 
 }
 
+function mostrarMultasFecha(){
+    let oFechaIni=new Date(frmListarMultPorFechas.fechaComienzoMultas.value);
+    let oFechaFin=new Date(frmListarMultPorFechas.fechaFinMultas.value);
+    let oAuxIntercambio=null;
+
+    //intercambiando fechas en el caso de que el usuario introduzca las fechas al revés
+
+    if(oFechaIni.getTime()>oFechaFin.getTime()){
+        oAuxIntercambio=oFechaIni;
+        oFechaIni=oFechaFin;
+        oFechaFin=oAuxIntercambio;
+    }
+
+    
+    let sContenedorFechasMultas = oDGT.listadoMultasPorFecha(oFechaIni,oFechaFin);
+    let oImprimir = document.getElementById("cuerpoModalListadoMultasFecha");
+
+    oImprimir.innerHTML = sContenedorFechasMultas;
+
+    
+}
 
 function imprimirMulta() {
     let idMulta = parseInt(frmImprimirMulta.txtIdMulta.value);

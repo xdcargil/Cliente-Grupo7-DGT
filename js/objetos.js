@@ -46,7 +46,7 @@ class DGT {
 
     }
 
-    altaGuardiaCivil(oGuardia){
+    altaGuardiaCivil(oGuardia) {
         let oExisteGuardia = oDGT._buscarPersona(oGuardia.NIF);
 
         if (oExisteGuardia == null) {
@@ -67,64 +67,64 @@ class DGT {
         return oPersonaExistente;
     }
 
-    _buscarConductor(iNIF){
+    _buscarConductor(iNIF) {
         let oConductorExistente = null;
-        
-        let oConductores=this._personas.filter(persona => persona instanceof Conductor);
+
+        let oConductores = this._personas.filter(persona => persona instanceof Conductor);
         console.log(oConductores);
         console.log(iNIF);
-        oConductorExistente = oConductores.find(persona => persona.NIF == iNIF );
+        oConductorExistente = oConductores.find(persona => persona.NIF == iNIF);
         console.log(oConductorExistente);
         return oConductorExistente;
     }
 
-    _buscarGuardia(iNIF){
+    _buscarGuardia(iNIF) {
         let oGuardiaExistente = null;
-        let oGuardias=this._personas.filter(persona => persona instanceof GuardiaCivil);
-        
+        let oGuardias = this._personas.filter(persona => persona instanceof GuardiaCivil);
+
         console.log(oGuardias);
-        oGuardiaExistente = oGuardias.find(persona => persona.NIF == iNIF );
+        oGuardiaExistente = oGuardias.find(persona => persona.NIF == iNIF);
 
         return oGuardiaExistente;
     }
 
-    registrarMulta(oMulta){
-        let oMultaExistente=this._multas.find(oMult => oMult.multa == oMulta.multa);
-        let bExito=false;
+    registrarMulta(oMulta) {
+        let oMultaExistente = this._multas.find(oMult => oMult.multa == oMulta.multa);
+        let bExito = false;
 
-        if(oMultaExistente===undefined){
+        if (oMultaExistente === undefined) {
             this._multas.push(oMulta);
-            bExito=true;
+            bExito = true;
         }
 
         return bExito;
     }
 
-    buscarMulta(iIDMulta){
-        let oMulta =  null;
-        oMulta= this._multas.find(multa=>multa.multa == iIDMulta);
+    buscarMulta(iIDMulta) {
+        let oMulta = null;
+        oMulta = this._multas.find(multa => multa.multa == iIDMulta);
         return oMulta;
     }
 
-    
-    delvoverDatosMulta(idMulta){
+
+    delvoverDatosMulta(idMulta) {
         //Este metodo sirve para delvover los datos a código y imprimir por pantalla
         let multa = oDGT.buscarMulta(idMulta);
         let resultado = "";
-        if(multa!=null){
+        if (multa != null) {
             resultado = multa.toHTMLRow();
-           return resultado;
-        }else{
+            return resultado;
+        } else {
             return false;
         }
 
 
     }
 
-    /*Listado de Conductores*/ 
-    listarConductores(){
+    /*Listado de Conductores*/
+    listarConductores() {
 
-        
+
         let sTabla = '<table border="1">';
         // Encabezado de la tabla
         sTabla += "<thead><tr>";
@@ -132,28 +132,28 @@ class DGT {
         sTabla += "<th>Apellido</th></th><th>Direccion</th>";
         sTabla += "<th>Fecha Carnet</th>";
         sTabla += "</tr></thead>";
-        
+
         let oConductorAux = this._personas.filter(persona => persona instanceof Conductor);
-        
-        if(oConductorAux.length > 0){
-            
+
+        if (oConductorAux.length > 0) {
+
             for (let oP of oConductorAux) {
                 sTabla += oP.toHTMLRow();
             }
             sTabla += "</tbody>";
-            
-             return sTabla;
+
+            return sTabla;
         }
-        else{
-            
-           return "No hay conductores";
+        else {
+
+            return "No hay conductores";
         }
     }
 
-    /*Listado de Guardia*/ 
-    listarGuardiaCivil(){
+    /*Listado de Guardia*/
+    listarGuardiaCivil() {
 
-        
+
         let sTabla = '<table border="1">';
         // Encabezado de la tabla
         sTabla += "<thead><tr>";
@@ -161,24 +161,57 @@ class DGT {
         sTabla += "<th>Apellido</th></th><th>Direccion</th>";
         sTabla += "<th>Rango</th>";
         sTabla += "</tr></thead>";
-        
+
         let oGuardiaAux = this._personas.filter(persona => persona instanceof GuardiaCivil);
-        
-        if(oGuardiaAux.length > 0){
-            
+
+        if (oGuardiaAux.length > 0) {
+
             for (let oP of oGuardiaAux) {
                 sTabla += oP.toHTMLRow();
             }
             sTabla += "</tbody>";
-            
-             return sTabla;
+
+            return sTabla;
         }
-        else{
-            
-           return "No hay Guardia civil";
+        else {
+
+            return "No hay Guardia civil";
         }
     }
 
+    listadoMultasPorFecha(dFechaIni, dFechaFin) {
+        let oListaMultas = this._multas.filter(oMul => oMul.fecha.getTime() >= dFechaIni.getTime() && oMul.fecha.getTime() <= dFechaFin.getTime());
+        let sTabla="";
+
+        if (oListaMultas.length > 0) {
+
+            sTabla = '<table border="1">';
+
+            // Encabezado de la tabla
+            sTabla += "<thead><tr>";
+            sTabla += "<th>ID Multa</th><th>Fecha</th>";
+            sTabla += "<th>Importe</th>";
+            sTabla += "</tr></thead><tbody>";
+
+            // array de multas entre las fechas dadas
+
+            let sumaTotal = 0;
+
+            for (let oM of oListaMultas) {
+                sTabla += oM._ListadoImporte();
+                sumaTotal += oM.importe;
+            }
+
+            sTabla += `<tr><td colspan="2"> Importe total </td><td>${sumaTotal}</td></tr>`;
+
+        } else {
+            sTabla += "<h5 class='text-danger'>¡No se han encontrado multas entre ese rango de Fechas!</h5>";
+        }
+
+        sTabla += "</tbody>";
+
+        return sTabla;
+    }
 }
 
 // ------------- FIN Clase DGT   -------------
@@ -258,6 +291,16 @@ Multa.prototype.toHTMLRow = function () { //Metodo de la clase Multa
     sFila += "<td>" + this.descripcion + "</td>";
     sFila += "<td>" + this.fecha + "</td>";
 
+    sFila += "</tr>";
+
+    return sFila;
+}
+
+Multa.prototype._ListadoImporte = function () {
+    let sFila = "<tr>";
+    sFila += "<td>" + this.multa + "</td>";
+    sFila += "<td>" + `${this.fecha.getDate()}/${this.fecha.getMonth() + 1}/${this.fecha.getFullYear()}` + "</td>";
+    sFila += "<td>" + this.importe + "</td>";
     sFila += "</tr>";
 
     return sFila;
