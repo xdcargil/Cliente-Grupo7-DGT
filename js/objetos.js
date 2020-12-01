@@ -121,6 +121,64 @@ class DGT {
 
     }
 
+    /*Listado de Conductores*/ 
+    listarConductores(){
+
+        
+        let sTabla = '<table border="1">';
+        // Encabezado de la tabla
+        sTabla += "<thead><tr>";
+        sTabla += "<th>NIF</th><th>Nombre</th>";
+        sTabla += "<th>Apellido</th></th><th>Direccion</th>";
+        sTabla += "<th>Fecha Carnet</th>";
+        sTabla += "</tr></thead>";
+        
+        let oConductorAux = this._personas.filter(persona => persona instanceof Conductor);
+        
+        if(oConductorAux.length > 0){
+            
+            for (let oP of oConductorAux) {
+                sTabla += oP.toHTMLRow();
+            }
+            sTabla += "</tbody>";
+            
+             return sTabla;
+        }
+        else{
+            
+           return "No hay conductores";
+        }
+    }
+
+    /*Listado de Guardia*/ 
+    listarGuardiaCivil(){
+
+        
+        let sTabla = '<table border="1">';
+        // Encabezado de la tabla
+        sTabla += "<thead><tr>";
+        sTabla += "<th>NIF</th><th>Nombre</th>";
+        sTabla += "<th>Apellido</th></th><th>Direccion</th>";
+        sTabla += "<th>Rango</th>";
+        sTabla += "</tr></thead>";
+        
+        let oGuardiaAux = this._personas.filter(persona => persona instanceof GuardiaCivil);
+        
+        if(oGuardiaAux.length > 0){
+            
+            for (let oP of oGuardiaAux) {
+                sTabla += oP.toHTMLRow();
+            }
+            sTabla += "</tbody>";
+            
+             return sTabla;
+        }
+        else{
+            
+           return "No hay Guardia civil";
+        }
+    }
+
 }
 
 // ------------- FIN Clase DGT   -------------

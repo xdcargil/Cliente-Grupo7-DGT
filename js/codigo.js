@@ -181,3 +181,28 @@ function btnGravePulsado() {
 
 
 
+
+
+
+
+/*Listado de Conductores*/ 
+    
+function mostrarListadoConductores() {
+    
+    oDGT.listarConductores();
+    let sContenedorConductores = oDGT.listarConductores();
+    let oImprimir =  document.getElementById("cuerpoModalListadoConductores");
+   
+    oImprimir.innerHTML = sContenedorConductores;
+   }
+   
+   /*Listado de Guardia*/ 
+       
+   function mostrarListadoGuardiasCiviles() {
+       
+       oDGT.listarGuardiaCivil();
+       let sContenedorGuardia = oDGT.listarGuardiaCivil();
+       let oImprimir =  document.getElementById("cuerpoModalListadoGuardiasCiviles");
+      
+       oImprimir.innerHTML = sContenedorGuardia;
+      }
