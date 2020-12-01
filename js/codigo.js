@@ -26,7 +26,18 @@ function altaConductor() {
     }
 }
 
+function mostrarPuntosConductor() {
 
+    if(oDGT.PuntosConductor()!=1){
+        let div = document.getElementById("cuerpoModalListadoPuntosConductor");
+        div.innerHTML="<table id='tablaPuntosConductor'><tr><th>NIF Conductor</th><th>Puntos Conductor</th></tr><table>";
+        document.getElementById("tablaPuntosConductor").innerHTML+=oDGT.PuntosConductor();
+    }else{
+        document.getElementById("cuerpoModalListadoPuntosConductor").innerHTML="No hay multas";
+    }
+
+
+}
 
 function altaGuardiaCivil() {
 
@@ -192,7 +203,6 @@ function btnGravePulsado() {
 
 function mostrarListadoConductores() {
 
-    oDGT.listarConductores();
     let sContenedorConductores = oDGT.listarConductores();
     let oImprimir = document.getElementById("cuerpoModalListadoConductores");
 
@@ -202,7 +212,6 @@ function mostrarListadoConductores() {
 /*Listado de Guardia*/
 
 function mostrarListadoGuardiasCiviles() {
-    oDGT.listarGuardiaCivil();
     let sContenedorGuardia = oDGT.listarGuardiaCivil();
     let oImprimir = document.getElementById("cuerpoModalListadoGuardiasCiviles");
 
