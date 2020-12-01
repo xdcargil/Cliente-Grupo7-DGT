@@ -186,6 +186,17 @@ function btnGravePulsado() {
 
 }
 
+//Limpia los modales cuando se clickea en cerrar de cualquier modal
+function limpiarModal(){
+  let inputs=document.getElementsByTagName('input');
+  for (let index = 0; index < inputs.length; index++) {
+      if (inputs[index].type=="text") {
+          inputs[index].value="";
+      }
+      
+  }
+}
+
 
 
 /*Listado de Conductores*/
