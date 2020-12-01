@@ -139,6 +139,7 @@ class DGT {
 
             for (let oP of oConductorAux) {
                 sTabla += oP.toHTMLRow();
+              
             }
             sTabla += "</tbody>";
 
@@ -212,6 +213,66 @@ class DGT {
 
         return sTabla;
     }
+
+    listarMultasPorGuardia(){
+
+        let sTabla = '<table border="1">';
+        // Encabezado de la tabla
+        sTabla += "<thead><tr>";
+        sTabla += "<th>NIF</th><th>Nombre</th>";
+        sTabla += "<th>Apellido</th></th><th>Direccion</th>";
+        sTabla += "<th>Rango</th>";
+        sTabla += "<th>Número de multas</th>";
+        sTabla += "</tr></thead>";
+        
+        let oGuardiaAux = this._personas.filter(persona => persona instanceof GuardiaCivil);
+        let contadorMultas=0;
+        
+        //Agrega un atributo a cada guardia con un numero de multas
+        for (let oG of oGuardiaAux) {
+            oG.numeroMultas=0;
+        }
+
+        //Mira si la array tiene datos
+        if(oGuardiaAux.length > 0){
+            
+            //Recorre la array de guardias
+            for (let oP of oGuardiaAux) {
+               /*  sTabla += oP.toHTMLRow(); */
+               //Para cada nuevo guardia le pones el contador a 0
+                contadorMultas=0;
+                //Recorre la array multas y mira si el nif del guardia esta en el nifGuardia de la multa
+                for(let oM of this._multas){
+                    if(oP.NIF == oM.NIFGuardia){
+                        contadorMultas++;
+                        console.log(contadorMultas);
+                    }
+                }
+                //Agrega al atributo numeroMultas el contador
+                oP.numeroMultas=contadorMultas;
+
+                let sFila = "<tr>";
+                sFila += "<td>" + oP.NIF + "</td>";
+                sFila += "<td>" + oP.nombre + "</td>";
+                sFila += "<td>" + oP.apellidos + "</td>";
+                sFila += "<td>" + oP.direccion + "</td>";
+                sFila += "<td>" + oP.puesto + "</td>";
+                sFila += "<td>" + oP.numeroMultas + "</td>";     
+                sFila += "</tr>";
+                sTabla+=sFila;
+
+            }
+            console.log(oGuardiaAux);
+            sTabla += "</tbody>";
+            
+             return sTabla;
+        }
+        else{
+            
+           return "No hay Guardia civil";
+        }
+    }
+
 }
 
 // ------------- FIN Clase DGT   -------------
