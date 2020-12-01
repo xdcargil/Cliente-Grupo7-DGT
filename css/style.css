@@ -26,8 +26,17 @@ h4{
     width: 100%;
 }
 
-table,td{
-    border: solid 1px black;
-    padding: 15px;
-    margin-top: 12%;
+table,td , th{
+    border: solid 2px rgba(0, 0, 0, 0.589);
+    padding: 10px;
+    margin-top: 10%;
+    margin-right: 10%;
+    text-align: center;
+}
+
+th{
+    font-weight: bold;
+    background-color: rgb(149, 207, 246);
+    text-align: center;
+    padding: 1%;
 }
