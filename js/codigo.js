@@ -132,15 +132,15 @@ function pagarMulta() {
 function imprimirMulta() {
     let idMulta = parseInt(frmImprimirMulta.txtIdMulta.value);
     let resultado = "<tr><th>IDMulta</th><th>NIF Conductor</th><th>NIF Guardia</th><th>Importe</th><th>Pagada</th><th>Desripción</th><th>Fecha</th><th>Bonificada</th></tr>";
-     resultado += oDGT.delvoverDatosMulta(idMulta);
+    resultado += oDGT.delvoverDatosMulta(idMulta);
 
     if (resultado) {
         let web = open("plantilla.html");
-        web.onload = function(){
-        
+        web.onload = function () {
+
             web.document.getElementById("tablaMulta").innerHTML = resultado;
 
-          };
+        };
 
     } else {
         alert("no se a encontrado la multa");
@@ -153,10 +153,6 @@ function imprimirMulta() {
 
 //Carga los styles cuadno carga la ventana para que aparezcan escondidos los containers
 //de los botones leve y grave
-/*window.onload = function () {
-    document.getElementById("multiCollapseRadios").style.display = "none";
-    document.getElementById("multiCollapsePuntos").style.display = "none";
-};
 
 //Ocultamos los botones cuando puslsamos el boton de registrar multa
 function ocultarLeveYGrave() {
@@ -180,7 +176,7 @@ function btnGravePulsado() {
     document.getElementById("multiCollapseRadios").style.display = "none";
     document.getElementById("multiCollapsePuntos").style.display = "block";
 
-}*/
+}
 
 
 
