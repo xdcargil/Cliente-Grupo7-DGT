@@ -8,15 +8,12 @@ body{
     background: linear-gradient(0deg, rgba(255,195,86,0.10127801120448177) 11%, rgba(101,183,249,0.4990371148459384) 82%);
     background-repeat: no-repeat;
     background-attachment: fixed;
-
-
-
 }
 
 .btn{
     background-color: #61B7FF;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 0.9vw;
     color: #042F52;
 }
 h4{
@@ -61,12 +58,23 @@ th{
     height: 80px;
     width: 400px;
     text-align: center;
+    box-shadow: 10px 10px 14px -5px rgba(0,0,0,0.51);
+    transition: all 2s ;
+    opacity: 1;
+    
+
+}
+#alerta:hover{
+    transform: scale(1.5);
+    opacity: 0;
 
 }
 
+
+
 #alertaExito{
     font-size: 20px;
-    border: solid rgba(17, 226, 52, 0.568) 3px;
+    border: solid rgba(135, 231, 151, 0.568) 3px;
     position: absolute;
     top: 19%;
     left: 39.5%;
@@ -74,9 +82,15 @@ th{
     height: 80px;
     width: 400px;
     text-align: center;
+    box-shadow: 10px 10px 14px -5px rgba(0,0,0,0.51);
+    transition: all 2s ;
+    opacity: 1;
+}
+#alertaExito:hover{
+    transform: scale(1.5);
+    opacity: 0;
 
 }
-
 
 
 button:hover{
