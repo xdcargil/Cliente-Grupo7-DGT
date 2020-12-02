@@ -74,6 +74,7 @@ function altaGuardiaCivil() {
 
         if (oDGT.altaGuardiaCivil(oNuevoGuardiaCivil)) {
             alert("Guardia Agregado");
+            limpiarModal();
             $('#altaGuardiaCivilModal').modal('hide'); //Esta función cierra el modal.
         } else {
             alert("El guardia no se ha podido agregar");
