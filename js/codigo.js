@@ -30,11 +30,12 @@ function altaConductor() {
     let sDireccion = frmAltaConductor.txtDireccion.value.trim();
     let dFechaCarnet = new Date(frmAltaConductor.dFechaCarnet.value);
 
-    if (sNif && sNombre && sApellido && sDireccion.length && dFechaCarnet != "") {
+    if (sNif && sNombre && sApellido && sDireccion.length && dFechaCarnet != "Invalid Date") {
 
         let oNuevoConductor = new Conductor(sNif, sNombre, sApellido, sDireccion, dFechaCarnet);
         if (oDGT.altaConductor(oNuevoConductor)) {
             alert("Conductor Agregado");
+            limpiarModal();
             $('#altaConductorModal').modal('hide'); //Esta función cierra el modal.
 
         } else {
@@ -95,14 +96,14 @@ function registrarMulta() {
     let dFechaMulta = new Date(frmRegistroMulta.txtFechaAltaMulta.value);
 
     if (oDGT._buscarConductor(sNifConductor) != null && oDGT._buscarGuardia(sNifGuardia) != null) {
-        if ((sIdMulta && fImporte && sDescripcion /* && dFechaMulta*/ != "")) {
+        if ((sIdMulta && fImporte && sDescripcion  && dFechaMulta != "Invalid Date")) {
             if (frmRegistroMulta.txtPuntos.value.trim().length > 0) {
                 //alta grave
                 let iPuntos = parseInt(frmRegistroMulta.txtPuntos.value.trim());
                 if (iPuntos >= 1 && iPuntos <= 15) {
 
                     let oGrave = new Grave(sIdMulta, sNifConductor, sNifGuardia, fImporte, sDescripcion, dFechaMulta, iPuntos);
-                    oDGT.registrarMulta(oGrave) ? alert("Se ha registrado la multa") : alert("No se ha podido registrar la multa");
+                    oDGT.registrarMulta(oGrave) ? alert("Se ha registrado la multa") && limpiarModal() : alert("No se ha podido registrar la multa");
 
                 } else {
                     alert("Error al introducir los puntos");
@@ -115,7 +116,7 @@ function registrarMulta() {
 
                 let oLeve = new Leve(sIdMulta, sNifConductor, sNifGuardia, fImporte, sDescripcion, dFechaMulta, bBonificada);
 
-                oDGT.registrarMulta(oLeve) ? alert("Se ha registrado la multa") : alert("No se ha podido registrar la multa");
+                oDGT.registrarMulta(oLeve) ? alert("Se ha registrado la multa") && limpiarModal() : alert("No se ha podido registrar la multa");
             }
         }
         else {
@@ -155,6 +156,7 @@ function pagarMulta() {
                 //Si la multa tenia el atributo "pagada" en false, y el checkbox esta en true,
                 //cambia el atributo "pagada" a true
                 multaACambiar.pagada = bPagada;
+                limpiarModal();
 
             }
         }
