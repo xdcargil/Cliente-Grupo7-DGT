@@ -30,11 +30,12 @@ function altaConductor() {
     let sDireccion = frmAltaConductor.txtDireccion.value.trim();
     let dFechaCarnet = new Date(frmAltaConductor.dFechaCarnet.value);
 
-    if (sNif && sNombre && sApellido && sDireccion.length && dFechaCarnet != "") {
+    if (sNif && sNombre && sApellido && sDireccion.length && dFechaCarnet != "Invalid Date") {
 
         let oNuevoConductor = new Conductor(sNif, sNombre, sApellido, sDireccion, dFechaCarnet);
         if (oDGT.altaConductor(oNuevoConductor)) {
             alert("Conductor Agregado");
+            limpiarModal();
             $('#altaConductorModal').modal('hide'); //Esta función cierra el modal.
 
         } else {
@@ -74,6 +75,7 @@ function altaGuardiaCivil() {
 
         if (oDGT.altaGuardiaCivil(oNuevoGuardiaCivil)) {
             alert("Guardia Agregado");
+            limpiarModal();
             $('#altaGuardiaCivilModal').modal('hide'); //Esta función cierra el modal.
         } else {
             alert("El guardia no se ha podido agregar");
@@ -93,39 +95,65 @@ function registrarMulta() {
     let sDescripcion = frmRegistroMulta.txtDescripcion.value.trim();
     let dFechaMulta = new Date(frmRegistroMulta.txtFechaAltaMulta.value);
 
-    if (oDGT._buscarConductor(sNifConductor) != null && oDGT._buscarGuardia(sNifGuardia) != null) {
-        if ((sIdMulta && fImporte && sDescripcion /* && dFechaMulta*/ != "")) {
-            if (frmRegistroMulta.txtPuntos.value.trim().length > 0) {
-                //alta grave
-                let iPuntos = parseInt(frmRegistroMulta.txtPuntos.value.trim());
-                if (iPuntos >= 1 && iPuntos <= 15) {
+    if(sNifConductor==sNifGuardia){
+        alert("No se puede multar asi mismo");
+    }else{
+        if (oDGT._buscarConductor(sNifConductor) != null && oDGT._buscarGuardia(sNifGuardia) != null) {
+            if ((sIdMulta && fImporte && sDescripcion  && dFechaMulta != "Invalid Date")) {
+                if (frmRegistroMulta.txtPuntos.value.trim().length > 0) {
+                    //alta grave
+                    let iPuntos = parseInt(frmRegistroMulta.txtPuntos.value.trim());
+                    if (iPuntos >= 1 && iPuntos <= 15) {
+    
+                        let oGrave = new Grave(sIdMulta, sNifConductor, sNifGuardia, fImporte, sDescripcion, dFechaMulta, iPuntos);
+                       // oDGT.registrarMulta(oGrave) ? alert("Se ha registrado la multa")  : alert("No se ha podido registrar la multa");
 
-                    let oGrave = new Grave(sIdMulta, sNifConductor, sNifGuardia, fImporte, sDescripcion, dFechaMulta, iPuntos);
-                    oDGT.registrarMulta(oGrave) ? alert("Se ha registrado la multa") : alert("No se ha podido registrar la multa");
+                        if(oDGT.registrarMulta(oGrave)){
+                            alert("Se ha registrado la multa");
+                            limpiarModal();
+                            $('#registroMultaModal').modal('hide');
+                        }else{
+                            alert("No se ha podido registrar la multa");
+                        }
 
+    
+                    } else {
+                        alert("Error al introducir los puntos");
+                    }
+    
                 } else {
-                    alert("Error al introducir los puntos");
+                    //alta leve
+                    let bBonificada = (frmRegistroMulta.radioBonificada.value == "s") ? true : false;
+                    fImporte = bBonificada ? fImporte * 0.75 : fImporte;
+    
+                    let oLeve = new Leve(sIdMulta, sNifConductor, sNifGuardia, fImporte, sDescripcion, dFechaMulta, bBonificada);
+    
+                   // oDGT.registrarMulta(oLeve) ? alert("Se ha registrado la multa") : alert("No se ha podido registrar la multa");
+
+                    if(oDGT.registrarMulta(oLeve)){
+                        alert("Se ha registrado la multa");
+                        limpiarModal();
+                        $('#registroMultaModal').modal('hide');
+                    }else{
+                        alert("No se ha podido registrar la multa");
+                    }
                 }
-
-            } else {
-                //alta leve
-                let bBonificada = (frmRegistroMulta.radioBonificada.value == "s") ? true : false;
-                fImporte = bBonificada ? fImporte * 0.75 : fImporte;
-
-                let oLeve = new Leve(sIdMulta, sNifConductor, sNifGuardia, fImporte, sDescripcion, dFechaMulta, bBonificada);
-
-                oDGT.registrarMulta(oLeve) ? alert("Se ha registrado la multa") : alert("No se ha podido registrar la multa");
             }
+            else {
+                alert("Rellene todos los campos");
+            }
+        } else {
+            alert("Error al validar NIF");
         }
-        else {
-            alert("Rellene todos los campos");
-        }
-    } else {
-        alert("Error al validar NIF");
+      
+      
+
+    
+        
     }
 
 
-    $('#registroMultaModal').modal('hide');
+   
 }
 
 function pagarMulta() {
@@ -154,6 +182,9 @@ function pagarMulta() {
                 //Si la multa tenia el atributo "pagada" en false, y el checkbox esta en true,
                 //cambia el atributo "pagada" a true
                 multaACambiar.pagada = bPagada;
+                alert("Multa pagada");
+                $('#pagarMultaModal').modal('hide');
+                limpiarModal();
 
             }
         }
@@ -197,21 +228,21 @@ function imprimirMulta() {
     let resultado = "<tr><th>IDMulta</th><th>NIF Conductor</th><th>NIF Guardia</th><th>Importe</th><th>Pagada</th><th>Desripción</th><th>Fecha</th><th>Bonificada</th></tr>";
     resultado += oDGT.delvoverDatosMulta(idMulta);
 
-    if (resultado) {
-        let ventanaImprimirMulta = open("plantilla.html");
-        ventanaImprimirMulta.onload = function () {
+    if (frmImprimirMulta.txtIdMulta.value.length > 0) {
+        let resultado = "<tr><th>IDMulta</th><th>NIF Conductor</th><th>NIF Guardia</th><th>Importe</th><th>Pagada</th><th>Desripción</th><th>Fecha</th><th>Bonificada</th></tr>";
+        resultado += oDGT.delvoverDatosMulta(idMulta);
 
-            ventanaImprimirMulta.document.getElementById("tablaMulta").innerHTML = resultado;
-
-
+        if(resultado){
+            let ventanaImprimirMulta = open("plantilla.html");
+            ventanaImprimirMulta.onload = function () {
+                ventanaImprimirMulta.document.getElementById("tablaMulta").innerHTML = resultado;
+            }
         }
-
-
-
-
+       
     } else {
-        alert("no se a encontrado la multa");
+        alert("Rellene todos los campos");
     }
+
 
 }
 

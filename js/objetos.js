@@ -33,7 +33,7 @@ class DGT {
     }
 
     altaConductor(oConductor) {
-        let oExisteConductor = oDGT._buscarPersona(oConductor.NIF);
+        let oExisteConductor = oDGT._buscarConductor(oConductor.NIF);
 
         if (oExisteConductor == null) {
             this._personas.push(oConductor);
@@ -45,7 +45,7 @@ class DGT {
     }
 
     altaGuardiaCivil(oGuardia) {
-        let oExisteGuardia = oDGT._buscarPersona(oGuardia.NIF);
+        let oExisteGuardia = oDGT._buscarGuardia(oGuardia.NIF);
 
         if (oExisteGuardia == null) {
             this._personas.push(oGuardia);
@@ -56,14 +56,14 @@ class DGT {
 
     }
 
-    _buscarPersona(iNIF) {
+    _/* buscarPersona(iNIF) {
 
         let oPersonaExistente = null;
 
         oPersonaExistente = this._personas.find(persona => persona.NIF == iNIF);
 
         return oPersonaExistente;
-    }
+    } */
 
     _buscarConductor(iNIF) {
         let oConductorExistente = null;
@@ -115,9 +115,8 @@ class DGT {
         } else {
             return false;
         }
-
-
     }
+
     PuntosConductor() {
         /*listadoPuntosConductor –Genera  un  
          * listado  con  los puntos  de  sanción  de  cada conductor. 
