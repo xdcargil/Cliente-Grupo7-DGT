@@ -134,7 +134,7 @@ class DGT {
                 if (conductor.NIF == multa.NIFConductor) {
                     resultadoConductor += "<tr>";
                     resultadoConductor += "<td>" + conductor.NIF + "</td>";
-                    resultadoConductor += "<td>" + multa.puntos + "</td>";
+                    resultadoConductor += "<td>" + (15-multa.puntos) + "</td>";
                     resultadoConductor += "</tr>";
 
                 }
