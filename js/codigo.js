@@ -108,7 +108,7 @@ function registrarMulta() {
                        // oDGT.registrarMulta(oGrave) ? alert("Se ha registrado la multa")  : alert("No se ha podido registrar la multa");
 
                         if(oDGT.registrarMulta(oGrave)){
-                            alert("Se ha registrado la multa");
+                            mostrarExito("Se ha registrado la multa");
                             limpiarModal();
                             $('#registroMultaModal').modal('hide');
                         }else{
@@ -130,7 +130,7 @@ function registrarMulta() {
                    // oDGT.registrarMulta(oLeve) ? alert("Se ha registrado la multa") : alert("No se ha podido registrar la multa");
 
                     if(oDGT.registrarMulta(oLeve)){
-                        alert("Se ha registrado la multa");
+                        mostrarExito("Se ha registrado la multa");
                         limpiarModal();
                         $('#registroMultaModal').modal('hide');
                     }else{
@@ -185,7 +185,7 @@ function pagarMulta() {
                 //Si la multa tenia el atributo "pagada" en false, y el checkbox esta en true,
                 //cambia el atributo "pagada" a true
                 multaACambiar.pagada = bPagada;
-                alert("Multa pagada");
+                mostrarExito("Multa pagada");
                 $('#pagarMultaModal').modal('hide');
                 limpiarModal();
 
