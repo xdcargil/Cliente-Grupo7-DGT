@@ -8,13 +8,14 @@ var oGuardia1 = new GuardiaCivil("1B","Guardia1","Apellido1, Apellido2","cuartel
 var oGuardia2 = new GuardiaCivil("2B","Guardia2","Apellido1, Apellido2","cuartel1","puestoGuardia");
 
 var oMultaPrueba = new Multa(1,"1A","1B",25.5,"Multa de prueba weon",new Date());
+var oMultaGrave = new Grave(2,"1A","1B",35.5,"Multa de prueba weon Grave",new Date(),10);
 
 oDGT.altaConductor(oConductor1);
 oDGT.altaConductor(oConductor2);
 oDGT.altaGuardiaCivil(oGuardia1);
 oDGT.altaGuardiaCivil(oGuardia2);
 oDGT._multas.push(oMultaPrueba);
-
+oDGT._multas.push(oMultaGrave);
 
 
 /*---------------FIN OBJETOS PRUEBA----------*/
