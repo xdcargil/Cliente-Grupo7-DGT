@@ -300,6 +300,43 @@ class DGT {
         }
     }
 
+
+    listarSaldoConductor(){
+
+        let arrayConductores = [];
+        let iImporte=0;
+        let sResultado="";
+        //Introduce en una array a las personas que sean conductores
+        for (let oP of this._personas) {
+            if (oP instanceof Conductor) {
+                arrayConductores.push(oP);
+            }
+        }
+
+        //Recorre la arary
+        for(let oC of arrayConductores){
+            //Inicializa el importe a 0 para cada conductor
+            iImporte=0;
+            for (let index = 0; index < this._multas.length; index++) {
+               
+                if (oC.NIF == this._multas[index].NIFConductor) {
+                    //Si el NIF del conductor es igual al NIFConductor de la multa sumale al importe total
+                    //No es necesario multiplicar por 0.25 debido a que las multas leves y modificadas ya entran con el descuento
+                    //Y las graves cuentan como tal, sin cambios
+                    
+                    iImporte+=this._multas[index].importe;
+                }
+                
+              
+            }
+            //Muestra cada conductor con su importe
+            sResultado+="El conductor: "+oC.nombre+ " debe: "+iImporte +"<br>";
+        }
+
+        return sResultado;
+
+    }
+
 }
 
 // ------------- FIN Clase DGT   -------------

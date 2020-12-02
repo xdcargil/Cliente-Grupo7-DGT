@@ -2,22 +2,24 @@
 var oDGT = new DGT();
 
 /*Objetos para prueba*/
-var oConductor1 = new Conductor("1A", "Conductor1", "Apellido1 Apellido2", "Calle1", new Date());
-var oConductor2 = new Conductor("2A", "Conductor2", "Apellido1 Apellido2", "Calle2", new Date());
-var oGuardia1 = new GuardiaCivil("1B", "Guardia1", "Apellido1, Apellido2", "cuartel1", "puestoGuardia");
-var oGuardia2 = new GuardiaCivil("2B", "Guardia2", "Apellido1, Apellido2", "cuartel1", "puestoGuardia");
+var oConductor1 = new Conductor("1", "Conductor1", "Apellido1 Apellido2", "Calle1", new Date());
+var oConductor2 = new Conductor("2", "Conductor2", "Apellido1 Apellido2", "Calle2", new Date());
+var oGuardia1 = new GuardiaCivil("1", "Guardia1", "Apellido1, Apellido2", "cuartel1", "puestoGuardia");
+var oGuardia2 = new GuardiaCivil("3", "Guardia2", "Apellido1, Apellido2", "cuartel1", "puestoGuardia");
 
-var oMultaPrueba = new Multa(1, "1A", "1B", 25.5, "Multa de prueba weon", new Date());
-var oMultaPrueba2 = new Grave(2, "1A", "1B", 25.5, "Multa de prueba weon", new Date(),10);
-var oMultaPrueba3 = new Grave(3, "2A", "1B", 25.5, "Multa de prueba weon", new Date(),15);
+//var oMultaPrueba = new Multa(1, "1", "3", 25.5, "Multa de prueba weon", new Date());
+var oMultaPrueba2 = new Leve(2, "1","3",100,"Multa leve",new Date(),true);
+var oMultaPrueba3 = new Grave(3, "1", "3", 25.5, "Multa de prueba Grave weon", new Date(),10);
+var oMultaPrueba4 = new Grave(4, "2", "1", 25.5, "Multa de prueba Grave weon", new Date(),15);
 
 oDGT.altaConductor(oConductor1);
 oDGT.altaConductor(oConductor2);
 oDGT.altaGuardiaCivil(oGuardia1);
 oDGT.altaGuardiaCivil(oGuardia2);
-oDGT._multas.push(oMultaPrueba);
+//oDGT._multas.push(oMultaPrueba);
 oDGT._multas.push(oMultaPrueba2);
 oDGT._multas.push(oMultaPrueba3);
+oDGT._multas.push(oMultaPrueba4);
 
 
 /*---------------FIN OBJETOS PRUEBA----------*/
@@ -315,10 +317,25 @@ function mostrarExito(sTexto, Modal){
 function ocultarExito(){
     document.getElementById("alertaExito").style.display = "none";
 }
+
+//Limpia el cuerpo del modal cuando se abre, por si el usuario pulsa la x de la esquina en vez de los botones
+
+function limpiarCuerpoModal(iDCapa){
+    document.getElementById(iDCapa).innerHTML="";
+}
+
 /*LISTADOS*/
 
 
+function mostrarSaldoConductor(){
 
+   
+
+    let sContenedorSaldoConductor = oDGT.listarSaldoConductor();
+    let oImprimir = document.getElementById("cuerpoModalListadoSaldoConductor");
+    oImprimir.innerHTML = sContenedorSaldoConductor;
+
+}
 
 
 
