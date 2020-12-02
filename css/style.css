@@ -43,12 +43,10 @@ th{
     padding: 15px;
 }
 
-button{
+.btn btn-primary{
     box-shadow: 10px 10px 14px -5px rgba(0,0,0,0.51);
     transition-delay: 2s;
     transition: all;
-
-    
 }
 
 
