@@ -30,7 +30,7 @@ function altaConductor() {
     let sDireccion = frmAltaConductor.txtDireccion.value.trim();
     let dFechaCarnet = new Date(frmAltaConductor.dFechaCarnet.value);
 
-    if (sNif && sNombre && sApellido && sDireccion.length && dFechaCarnet != "Invalid Date") {
+    if (sNif !=""  && sNombre !=""  && sApellido !=""  && sDireccion.length !="" && dFechaCarnet != "Invalid Date") {
 
         let oNuevoConductor = new Conductor(sNif, sNombre, sApellido, sDireccion, dFechaCarnet);
         if (oDGT.altaConductor(oNuevoConductor)) {
@@ -95,11 +95,10 @@ function registrarMulta() {
     let sDescripcion = frmRegistroMulta.txtDescripcion.value.trim();
     let dFechaMulta = new Date(frmRegistroMulta.txtFechaAltaMulta.value);
 
-    if(sNifConductor==sNifGuardia){
-        alert("No se puede multar asi mismo");
-    }else{
+    
         if (oDGT._buscarConductor(sNifConductor) != null && oDGT._buscarGuardia(sNifGuardia) != null) {
-            if ((sIdMulta && fImporte && sDescripcion  && dFechaMulta != "Invalid Date")) {
+            if ((sIdMulta !=""  && fImporte !=""  && sDescripcion !=""   && dFechaMulta != "Invalid Date")) {
+                if(sNifConductor!=sNifGuardia){
                 if (frmRegistroMulta.txtPuntos.value.trim().length > 0) {
                     //alta grave
                     let iPuntos = parseInt(frmRegistroMulta.txtPuntos.value.trim());
@@ -138,10 +137,14 @@ function registrarMulta() {
                         alert("No se ha podido registrar la multa");
                     }
                 }
+            }else{
+                alert("Un guardia civil no puede multarse a sí mismo");
+            }
             }
             else {
                 alert("Rellene todos los campos");
             }
+            
         } else {
             alert("Error al validar NIF");
         }
@@ -154,7 +157,7 @@ function registrarMulta() {
 
 
    
-}
+
 
 function pagarMulta() {
 
