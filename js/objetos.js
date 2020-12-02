@@ -300,6 +300,42 @@ class DGT {
         }
     }
 
+    listarSaldoConductor() {
+        
+        let sTabla = '<table border="1">';
+        // Encabezado de la tabla
+        sTabla += "<thead><tr>";
+        sTabla += "<th>NIF</th><th>Saldo</th>";
+        sTabla += "</tr></thead>";
+    
+        for(let i = 0; i < this._personas.length; i++){
+            let resultado = 0;
+            if(this._personas[i] instanceof Conductor){
+                for(let o = 0; o<this._multas.length; o++){
+                    if(this._personas[i].NIF == this._multas[o].NIFConductor){
+                        if(this._multas[o].bonificada == "s"){
+                        resultado += parseFloat((this._multas[o].importe) - (this._multas[o].importe * 0.25));
+                        sTabla += resultado;
+                        }
+                        else{
+                            resultado += parseFloat(this._multas[o].importe);
+                            sTabla += resultado;
+                        }
+                        alert(resultado);
+                    }
+                }
+            }
+            else{
+                return "No hay Conductores con Multas";
+            }
+        }
+        sTabla += "</tbody>";
+    
+        return sTabla;
+    
+        
+    }
+
 }
 
 // ------------- FIN Clase DGT   -------------

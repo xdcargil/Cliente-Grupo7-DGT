@@ -350,3 +350,13 @@ function mostrarListadoGuardiasCiviles() {
 
     oImprimir.innerHTML = sContenedorGuardia;
 }
+
+function mostrarSaldoConductor() {
+
+    let sContenedorListadoSAldo = oDGT.listarSaldoConductor();
+    let oImprimir = document.getElementById("cuerpoModalListadoSaldoConductor");
+
+    oImprimir.innerHTML = sContenedorListadoSAldo;
+
+
+}
