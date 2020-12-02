@@ -28,7 +28,7 @@ function altaConductor() {
     let sDireccion = frmAltaConductor.txtDireccion.value.trim();
     let dFechaCarnet = new Date(frmAltaConductor.dFechaCarnet.value);
 
-    if (sNif && sNombre && sApellido && sDireccion.length && dFechaCarnet != "") {
+    if (sNif && sNombre && sApellido && sDireccion.length && dFechaCarnet != "Invalid Date") {
 
         let oNuevoConductor = new Conductor(sNif, sNombre, sApellido, sDireccion, dFechaCarnet);
         if (oDGT.altaConductor(oNuevoConductor)) {
@@ -92,7 +92,7 @@ function registrarMulta() {
     let dFechaMulta = new Date(frmRegistroMulta.txtFechaAltaMulta.value);
 
     if (oDGT._buscarConductor(sNifConductor) != null && oDGT._buscarGuardia(sNifGuardia) != null) {
-        if ((sIdMulta && fImporte && sDescripcion /* && dFechaMulta*/ != "")) {
+        if ((sIdMulta && fImporte && sDescripcion  && dFechaMulta !="Invalid Date")) {
             if (frmRegistroMulta.txtPuntos.value.trim().length > 0) {
                 //alta grave
                 let iPuntos = parseInt(frmRegistroMulta.txtPuntos.value.trim());
