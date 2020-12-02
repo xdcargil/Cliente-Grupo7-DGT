@@ -112,12 +112,12 @@ function registrarMulta() {
                             limpiarModal();
                             $('#registroMultaModal').modal('hide');
                         }else{
-                            alert("No se ha podido registrar la multa");
+                            mostrarError("No se ha podido registrar la multa");
                         }
 
     
                     } else {
-                        alert("Error al introducir los puntos");
+                        mostrarError("Error al introducir los puntos");
                     }
     
                 } else {
@@ -134,19 +134,19 @@ function registrarMulta() {
                         limpiarModal();
                         $('#registroMultaModal').modal('hide');
                     }else{
-                        alert("No se ha podido registrar la multa");
+                        mostrarError("No se ha podido registrar la multa");
                     }
                 }
             }else{
-                alert("Un guardia civil no puede multarse a sí mismo");
+                mostrarError("Un guardia civil no puede multarse a sí mismo");
             }
             }
             else {
-                alert("Rellene todos los campos");
+                mostrarError("Rellene todos los campos");
             }
             
         } else {
-            alert("Error al validar NIF");
+            mostrarError("Error al validar NIF");
         }
       
       
@@ -179,7 +179,7 @@ function pagarMulta() {
             //Si el checkbox "bPagada" no tiene el valor (checked==true) avisa 
             //que no ha cambiado nada porque la multa ya tenia el atributo pagada en false
             if (bPagada == false) {
-                alert("No se ha cambiado nada");
+                mostrarError("No se ha cambiado nada");
             }
             else {
                 //Si la multa tenia el atributo "pagada" en false, y el checkbox esta en true,
@@ -193,12 +193,12 @@ function pagarMulta() {
         }
         else {
             //Si el atributo "pagada" es != de false, entonces porque ya esta pagada=>
-            alert("La multa ya está pagada");
+            mostrarError("La multa ya está pagada");
         }
     }
     else {
         //Si la multa no existe, muestra este mensaje
-        alert("La multa no existe");
+        mostrarError("La multa no existe");
     }
 
 
@@ -243,7 +243,7 @@ function imprimirMulta() {
         }
        
     } else {
-        alert("Rellene todos los campos");
+        mostrarError("Rellene todos los campos");
     }
 
 
