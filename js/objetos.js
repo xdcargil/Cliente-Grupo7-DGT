@@ -320,8 +320,8 @@ class Conductor extends Persona { //Clase Conductor hereda de Persona
         sFila += "<td>" + this.nombre + "</td>";
         sFila += "<td>" + this.apellidos + "</td>";
         sFila += "<td>" + this.direccion + "</td>";
-        sFila += "<td>" + this.caducidadCarnet + "</td>";
-
+        sFila += "<td>" + `${this.caducidadCarnet.getDate()}/${this.caducidadCarnet.getMonth() + 1}/${this.caducidadCarnet.getFullYear()}` + "</td>";
+        
         sFila += "</tr>";
 
         return sFila;
@@ -380,7 +380,7 @@ Multa.prototype.toHTMLRow = function () { //Metodo de la clase Multa
     sFila += "<td>" + this.importe + "</td>";
     sFila += "<td>" + this.pagada + "</td>";
     sFila += "<td>" + this.descripcion + "</td>";
-    sFila += "<td>" + this.fecha + "</td>";
+    sFila += "<td>" + `${this.fecha.getDate()}/${this.fecha.getMonth() + 1}/${this.fecha.getFullYear()}` + "</td>";
 
     sFila += "</tr>";
 
@@ -418,7 +418,7 @@ Leve.prototype.toHTMLRow = function () {
     sFila += "<td>" + this.importe + "</td>";
     sFila += "<td>" + this.pagada + "</td>";
     sFila += "<td>" + this.descripcion + "</td>";
-    sFila += "<td>" + this.fecha + "</td>";
+    sFila += "<td>" + `${this.fecha.getDate()}/${this.fecha.getMonth() + 1}/${this.fecha.getFullYear()}` + "</td>";
     sFila += "<td>" + this.bonificada + "</td>";
 
     sFila += "</tr>";
@@ -449,7 +449,7 @@ Grave.prototype.toHTMLRow = function () {
     sFila += "<td>" + this.importe + "</td>";
     sFila += "<td>" + this.pagada + "</td>";
     sFila += "<td>" + this.descripcion + "</td>";
-    sFila += "<td>" + this.fecha + "</td>";
+    sFila += "<td>" + `${this.fecha.getDate()}/${this.fecha.getMonth() + 1}/${this.fecha.getFullYear()}` + "</td>";
     sFila += "<td>" + this.puntos + "</td>";
 
     sFila += "</tr>";
