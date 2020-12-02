@@ -35,7 +35,7 @@
 
         <div class="form-group">
           <div class="col-md-12">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#altaConductorModal">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#altaConductorModal" onclick="limpiarModal();">
               Alta de conductor
             </button>
           </div>
@@ -43,7 +43,7 @@
 
         <div class="form-group">
           <div class="col-md-12">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#altaGuardiaCivilModal">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#altaGuardiaCivilModal" onclick="limpiarModal();">
               Alta Guardia Civil
             </button>
           </div>
@@ -59,7 +59,7 @@
         <div class="form-group">
           <div class="col-md-12">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#registroMultaModal"
-              onclick="ocultarLeveYGrave();">
+              onclick="ocultarLeveYGrave(); limpiarModal();">
               Registrar Multa
             </button>
           </div>
@@ -67,7 +67,7 @@
 
         <div class="form-group">
           <div class="col-md-12">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#pagarMultaModal">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#pagarMultaModal" onclick="limpiarModal();">
               Pagar Multa
             </button>
           </div>
@@ -81,7 +81,7 @@
 
         <div class="form-group">
           <div class="col-md-12">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#listadoSaldoConductorModal">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#listadoSaldoConductorModal" onclick="limpiarCuerpoModal('cuerpoModalListadoSaldoConductor');">
               Listado Saldo Conductor
             </button>
           </div>
@@ -90,7 +90,7 @@
         <div class="form-group">
           <div class="col-md-12">
             <button type="button" class="btn btn-primary" data-toggle="modal"
-              data-target="#listadoPuntosConductorModal">
+              data-target="#listadoPuntosConductorModal" onclick="limpiarCuerpoModal('cuerpoModalListadoPuntosConductor');">
               Listado Puntos Conductor
             </button>
           </div>
@@ -98,7 +98,7 @@
 
         <div class="form-group">
           <div class="col-md-12">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#listadoMultasGuardia">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#listadoMultasGuardia" onclick="limpiarCuerpoModal('cuerpoModalListadoMultasGuardia');">
               Listado Multas Por Guardia
             </button>
           </div>
@@ -115,7 +115,7 @@
 
         <div class="form-group">
           <div class="col-md-12">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#listadoConductoresModal">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#listadoConductoresModal" onclick="limpiarCuerpoModal('cuerpoModalListadoConductores');">
               Listado Conductores
             </button>
           </div>
@@ -125,7 +125,7 @@
         <div class="form-group">
           <div class="col-md-12">
             <button type="button" class="btn btn-primary" data-toggle="modal"
-              data-target="#listadoGuardiasCivilesModal">
+              data-target="#listadoGuardiasCivilesModal" onclick="limpiarCuerpoModal('cuerpoModalListadoGuardiasCiviles');">
               Listado Guardia Civiles
             </button> </div>
         </div>
