@@ -198,21 +198,21 @@ function imprimirMulta() {
     let resultado = "<tr><th>IDMulta</th><th>NIF Conductor</th><th>NIF Guardia</th><th>Importe</th><th>Pagada</th><th>Desripción</th><th>Fecha</th><th>Bonificada</th></tr>";
     resultado += oDGT.delvoverDatosMulta(idMulta);
 
-    if (resultado) {
-        let ventanaImprimirMulta = open("plantilla.html");
-        ventanaImprimirMulta.onload = function () {
+    if (frmImprimirMulta.txtIdMulta.value.length > 0) {
+        let resultado = "<tr><th>IDMulta</th><th>NIF Conductor</th><th>NIF Guardia</th><th>Importe</th><th>Pagada</th><th>Desripción</th><th>Fecha</th><th>Bonificada</th></tr>";
+        resultado += oDGT.delvoverDatosMulta(idMulta);
 
-            ventanaImprimirMulta.document.getElementById("tablaMulta").innerHTML = resultado;
-
-
+        if(resultado){
+            let ventanaImprimirMulta = open("plantilla.html");
+            ventanaImprimirMulta.onload = function () {
+                ventanaImprimirMulta.document.getElementById("tablaMulta").innerHTML = resultado;
+            }
         }
-
-
-
-
+       
     } else {
-        alert("no se a encontrado la multa");
+        alert("Rellene todos los campos");
     }
+
 
 }
 

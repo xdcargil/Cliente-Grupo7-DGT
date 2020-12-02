@@ -115,9 +115,8 @@ class DGT {
         } else {
             return false;
         }
-
-
     }
+
     PuntosConductor() {
         /*listadoPuntosConductor –Genera  un  
          * listado  con  los puntos  de  sanción  de  cada conductor. 
