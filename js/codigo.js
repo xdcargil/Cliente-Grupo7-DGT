@@ -1,6 +1,25 @@
 "use strict";
 var oDGT = new DGT();
 
+/*Objetos para prueba*/
+var oConductor1 = new Conductor("1A","Conductor1","Apellido1 Apellido2","Calle1",new Date());
+var oConductor2 = new Conductor("2A","Conductor2","Apellido1 Apellido2","Calle2",new Date());
+var oGuardia1 = new GuardiaCivil("1B","Guardia1","Apellido1, Apellido2","cuartel1","puestoGuardia");
+var oGuardia2 = new GuardiaCivil("2B","Guardia2","Apellido1, Apellido2","cuartel1","puestoGuardia");
+
+var oMultaPrueba = new Multa(1,"1A","1B",25.5,"Multa de prueba weon",new Date());
+var oMultaGrave = new Grave(2,"1A","1B",35.5,"Multa de prueba weon Grave",new Date(),10);
+
+oDGT.altaConductor(oConductor1);
+oDGT.altaConductor(oConductor2);
+oDGT.altaGuardiaCivil(oGuardia1);
+oDGT.altaGuardiaCivil(oGuardia2);
+oDGT._multas.push(oMultaPrueba);
+oDGT._multas.push(oMultaGrave);
+
+
+/*---------------FIN OBJETOS PRUEBA----------*/
+
 function altaConductor() {
 
     let sNif = frmAltaConductor.txtNIF.value.trim();
@@ -26,7 +45,18 @@ function altaConductor() {
     }
 }
 
+function mostrarPuntosConductor() {
 
+    if (oDGT.PuntosConductor() != 1) {
+        let div = document.getElementById("cuerpoModalListadoPuntosConductor");
+        div.innerHTML = "<table id='tablaPuntosConductor'><tr><th>NIF Conductor</th><th>Puntos Conductor</th></tr><table>";
+        document.getElementById("tablaPuntosConductor").innerHTML += oDGT.PuntosConductor();
+    } else {
+        document.getElementById("cuerpoModalListadoPuntosConductor").innerHTML = "No hay multas";
+    }
+
+
+}
 
 function altaGuardiaCivil() {
 
@@ -138,6 +168,27 @@ function pagarMulta() {
 
 }
 
+function mostrarMultasFecha(){
+    let oFechaIni=new Date(frmListarMultPorFechas.fechaComienzoMultas.value);
+    let oFechaFin=new Date(frmListarMultPorFechas.fechaFinMultas.value);
+    let oAuxIntercambio=null;
+
+    //intercambiando fechas en el caso de que el usuario introduzca las fechas al revés
+
+    if(oFechaIni.getTime()>oFechaFin.getTime()){
+        oAuxIntercambio=oFechaIni;
+        oFechaIni=oFechaFin;
+        oFechaFin=oAuxIntercambio;
+    }
+
+    
+    let sContenedorFechasMultas = oDGT.listadoMultasPorFecha(oFechaIni,oFechaFin);
+    let oImprimir = document.getElementById("cuerpoModalListadoMultasFecha");
+
+    oImprimir.innerHTML = sContenedorFechasMultas;
+
+    
+}
 
 function imprimirMulta() {
     let idMulta = parseInt(frmImprimirMulta.txtIdMulta.value);
@@ -145,12 +196,13 @@ function imprimirMulta() {
     resultado += oDGT.delvoverDatosMulta(idMulta);
 
     if (resultado) {
-        let web = open("plantilla.html");
-        web.onload = function () {
+        let ventanaImprimirMulta = open("plantilla.html");
+         ventanaImprimirMulta.onload = function () {
 
-            web.document.getElementById("tablaMulta").innerHTML = resultado;
+             web.document.getElementById("tablaMulta").innerHTML = resultado; 
+            
 
-        };
+        } 
 
     } else {
         alert("no se a encontrado la multa");
@@ -186,23 +238,48 @@ function btnGravePulsado() {
 
 }
 
+//Limpia los modales cuando se clickea en cerrar de cualquier modal
+function limpiarModal() {
+    let inputs = document.getElementsByTagName('input');
+    for (let index = 0; index < inputs.length; index++) {
+        if (inputs[index].type == "text") {
+            inputs[index].value = "";
+        }
+
+    }
+}
 
 
-/*Listado de Conductores*/
+/*LISTADOS*/
+
+
+
+
+
+
+
+function mostrarMultasGuardia() {
+
+
+    let sContenedorMultasPorGuardia = oDGT.listarMultasPorGuardia();
+    let oImprimir = document.getElementById("cuerpoModalListadoMultasGuardia");
+    oImprimir.innerHTML = sContenedorMultasPorGuardia;
+
+
+}
+
 
 function mostrarListadoConductores() {
 
-    oDGT.listarConductores();
     let sContenedorConductores = oDGT.listarConductores();
     let oImprimir = document.getElementById("cuerpoModalListadoConductores");
 
     oImprimir.innerHTML = sContenedorConductores;
 }
 
-/*Listado de Guardia*/
 
 function mostrarListadoGuardiasCiviles() {
-    oDGT.listarGuardiaCivil();
+
     let sContenedorGuardia = oDGT.listarGuardiaCivil();
     let oImprimir = document.getElementById("cuerpoModalListadoGuardiasCiviles");
 
