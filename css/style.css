@@ -3,12 +3,14 @@
     padding: 0px;
 }
 
+body{
+    background: rgb(255,195,86);
+    background: linear-gradient(0deg, rgba(255,195,86,0.10127801120448177) 11%, rgba(101,183,249,0.4990371148459384) 82%);
 
-h1{
-    text-align: center;
-    border-bottom:solid 3px blue;
-    padding: 1%;
+
+
 }
+
 .btn{
     background-color: #61B7FF;
     font-weight: bold;
@@ -28,15 +30,39 @@ h4{
 
 table,td , th{
     border: solid 2px rgba(0, 0, 0, 0.589);
-    padding: 10px;
-    margin-top: 10%;
-    margin-right: 10%;
     text-align: center;
+
 }
 
 th{
     font-weight: bold;
     background-color: rgb(149, 207, 246);
     text-align: center;
-    padding: 3%;
+    padding: 15px;
+}
+
+button{
+    box-shadow: 10px 10px 14px -5px rgba(0,0,0,0.51);
+    transition-delay: 2s;
+    transition: all;
+
+    
+}
+
+
+
+button:hover{
+    transform: scale(1.2);
+}
+
+#cuerpoModalListadoPuntosConductor{
+    margin-left: 15%;
+}
+
+#cuerpoModalListadoMultasGuardia{
+    margin-left: 5%;
+}
+
+#titulo{
+float: right;
 }
