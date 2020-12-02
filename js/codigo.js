@@ -33,6 +33,7 @@ function altaConductor() {
         let oNuevoConductor = new Conductor(sNif, sNombre, sApellido, sDireccion, dFechaCarnet);
         if (oDGT.altaConductor(oNuevoConductor)) {
             alert("Conductor Agregado");
+            limpiarModal();
             $('#altaConductorModal').modal('hide'); //Esta función cierra el modal.
 
         } else {
@@ -72,6 +73,7 @@ function altaGuardiaCivil() {
 
         if (oDGT.altaGuardiaCivil(oNuevoGuardiaCivil)) {
             alert("Guardia Agregado");
+            limpiarModal();
             $('#altaGuardiaCivilModal').modal('hide'); //Esta función cierra el modal.
         } else {
             alert("El guardia no se ha podido agregar");
@@ -99,7 +101,8 @@ function registrarMulta() {
                 if (iPuntos >= 1 && iPuntos <= 15) {
 
                     let oGrave = new Grave(sIdMulta, sNifConductor, sNifGuardia, fImporte, sDescripcion, dFechaMulta, iPuntos);
-                    oDGT.registrarMulta(oGrave) ? alert("Se ha registrado la multa") : alert("No se ha podido registrar la multa");
+                   
+                  oDGT.registrarMulta(oGrave) ? alert("Se ha registrado la multa") && limpiarModal() : alert("No se ha podido registrar la multa");
 
                 } else {
                     alert("Error al introducir los puntos");
@@ -112,7 +115,9 @@ function registrarMulta() {
 
                 let oLeve = new Leve(sIdMulta, sNifConductor, sNifGuardia, fImporte, sDescripcion, dFechaMulta, bBonificada);
 
-                oDGT.registrarMulta(oLeve) ? alert("Se ha registrado la multa") : alert("No se ha podido registrar la multa");
+                
+
+                oDGT.registrarMulta(oLeve) ? alert("Se ha registrado la multa") && limpiarModal() : alert("No se ha podido registrar la multa");
             }
         }
         else {
@@ -152,6 +157,7 @@ function pagarMulta() {
                 //Si la multa tenia el atributo "pagada" en false, y el checkbox esta en true,
                 //cambia el atributo "pagada" a true
                 multaACambiar.pagada = bPagada;
+                limpiarModal();
 
             }
         }
