@@ -2,20 +2,22 @@
 var oDGT = new DGT();
 
 /*Objetos para prueba*/
-var oConductor1 = new Conductor("1A","Conductor1","Apellido1 Apellido2","Calle1",new Date());
-var oConductor2 = new Conductor("2A","Conductor2","Apellido1 Apellido2","Calle2",new Date());
-var oGuardia1 = new GuardiaCivil("1B","Guardia1","Apellido1, Apellido2","cuartel1","puestoGuardia");
-var oGuardia2 = new GuardiaCivil("2B","Guardia2","Apellido1, Apellido2","cuartel1","puestoGuardia");
+var oConductor1 = new Conductor("1A", "Conductor1", "Apellido1 Apellido2", "Calle1", new Date());
+var oConductor2 = new Conductor("2A", "Conductor2", "Apellido1 Apellido2", "Calle2", new Date());
+var oGuardia1 = new GuardiaCivil("1B", "Guardia1", "Apellido1, Apellido2", "cuartel1", "puestoGuardia");
+var oGuardia2 = new GuardiaCivil("2B", "Guardia2", "Apellido1, Apellido2", "cuartel1", "puestoGuardia");
 
-var oMultaPrueba = new Multa(1,"1A","1B",25.5,"Multa de prueba weon",new Date());
-var oMultaGrave = new Grave(2,"1A","1B",35.5,"Multa de prueba weon Grave",new Date(),10);
+var oMultaPrueba = new Multa(1, "1A", "1B", 25.5, "Multa de prueba weon", new Date());
+var oMultaPrueba2 = new Grave(2, "1A", "1B", 25.5, "Multa de prueba weon", new Date(),10);
+var oMultaPrueba3 = new Grave(3, "2A", "1B", 25.5, "Multa de prueba weon", new Date(),15);
 
 oDGT.altaConductor(oConductor1);
 oDGT.altaConductor(oConductor2);
 oDGT.altaGuardiaCivil(oGuardia1);
 oDGT.altaGuardiaCivil(oGuardia2);
 oDGT._multas.push(oMultaPrueba);
-oDGT._multas.push(oMultaGrave);
+oDGT._multas.push(oMultaPrueba2);
+oDGT._multas.push(oMultaPrueba3);
 
 
 /*---------------FIN OBJETOS PRUEBA----------*/
@@ -168,26 +170,26 @@ function pagarMulta() {
 
 }
 
-function mostrarMultasFecha(){
-    let oFechaIni=new Date(frmListarMultPorFechas.fechaComienzoMultas.value);
-    let oFechaFin=new Date(frmListarMultPorFechas.fechaFinMultas.value);
-    let oAuxIntercambio=null;
+function mostrarMultasFecha() {
+    let oFechaIni = new Date(frmListarMultPorFechas.fechaComienzoMultas.value);
+    let oFechaFin = new Date(frmListarMultPorFechas.fechaFinMultas.value);
+    let oAuxIntercambio = null;
 
     //intercambiando fechas en el caso de que el usuario introduzca las fechas al revés
 
-    if(oFechaIni.getTime()>oFechaFin.getTime()){
-        oAuxIntercambio=oFechaIni;
-        oFechaIni=oFechaFin;
-        oFechaFin=oAuxIntercambio;
+    if (oFechaIni.getTime() > oFechaFin.getTime()) {
+        oAuxIntercambio = oFechaIni;
+        oFechaIni = oFechaFin;
+        oFechaFin = oAuxIntercambio;
     }
 
-    
-    let sContenedorFechasMultas = oDGT.listadoMultasPorFecha(oFechaIni,oFechaFin);
+
+    let sContenedorFechasMultas = oDGT.listadoMultasPorFecha(oFechaIni, oFechaFin);
     let oImprimir = document.getElementById("cuerpoModalListadoMultasFecha");
 
     oImprimir.innerHTML = sContenedorFechasMultas;
 
-    
+
 }
 
 function imprimirMulta() {
@@ -197,12 +199,15 @@ function imprimirMulta() {
 
     if (resultado) {
         let ventanaImprimirMulta = open("plantilla.html");
-         ventanaImprimirMulta.onload = function () {
+        ventanaImprimirMulta.onload = function () {
 
-             web.document.getElementById("tablaMulta").innerHTML = resultado; 
-            
+            ventanaImprimirMulta.document.getElementById("tablaMulta").innerHTML = resultado;
 
-        } 
+
+        }
+
+
+
 
     } else {
         alert("no se a encontrado la multa");
