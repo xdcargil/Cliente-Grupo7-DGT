@@ -6,6 +6,8 @@
 body{
     background: rgb(255,195,86);
     background: linear-gradient(0deg, rgba(255,195,86,0.10127801120448177) 11%, rgba(101,183,249,0.4990371148459384) 82%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 
 
 
@@ -65,4 +67,10 @@ button:hover{
 
 #titulo{
 float: right;
+}
+
+#tablaMulta{
+    margin-top: 5%;
+    background-color: white;
+    border: solid 1px black;
 }
