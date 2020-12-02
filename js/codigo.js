@@ -34,17 +34,17 @@ function altaConductor() {
 
         let oNuevoConductor = new Conductor(sNif, sNombre, sApellido, sDireccion, dFechaCarnet);
         if (oDGT.altaConductor(oNuevoConductor)) {
-            alert("Conductor Agregado");
+            mostrarExito("Conductor Agregado", '#altaConductorModal');
             limpiarModal();
             $('#altaConductorModal').modal('hide'); //Esta función cierra el modal.
 
         } else {
-            alert("El conductor no se ha podido agregar");
+            mostrarError("El conductor no se ha podido agregar", '#altaConductorModal');
         }
 
 
     } else {
-        alert("rellene todos los campos");
+        mostrarError("Rellene todos los campos", '#altaConductorModal')
     }
 }
 
@@ -74,16 +74,16 @@ function altaGuardiaCivil() {
         let oNuevoGuardiaCivil = new GuardiaCivil(sNif, sNombre, sApellido, sDireccion, sPuesto);
 
         if (oDGT.altaGuardiaCivil(oNuevoGuardiaCivil)) {
-            alert("Guardia Agregado");
+            mostrarExito("Guardia Agregado",'#altaGuardiaCivilModal');
             limpiarModal();
             $('#altaGuardiaCivilModal').modal('hide'); //Esta función cierra el modal.
         } else {
-            alert("El guardia no se ha podido agregar");
+            mostrarError("El guardia no se ha podido agregar",'#altaGuardiaCivilModal');
         }
 
 
     } else {
-        alert("rellene todos los campos");
+        mostrarError("Rellene todos los campos",'#altaGuardiaCivilModal');
     }
 }
 
@@ -286,6 +286,32 @@ function limpiarModal() {
 }
 
 
+
+function mostrarError(sTexto, Modal){
+    
+    document.getElementById("alerta").innerHTML=sTexto;
+    document.getElementById("alerta").style.display = "block";
+    setTimeout("ocultarError()", 2000);
+    $(Modal).modal('hide');
+
+}
+
+function ocultarError(){
+    document.getElementById("alerta").style.display = "none";
+}
+
+function mostrarExito(sTexto, Modal){
+    
+    document.getElementById("alertaExito").innerHTML=sTexto;
+    document.getElementById("alertaExito").style.display = "block";
+    setTimeout("ocultarExito()", 2000);
+    $(Modal).modal('hide');
+
+}
+
+function ocultarExito(){
+    document.getElementById("alertaExito").style.display = "none";
+}
 /*LISTADOS*/
 
 
