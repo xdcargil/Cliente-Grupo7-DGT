@@ -51,6 +51,34 @@ th{
 
 
 
+#alerta{
+    font-size: 20px;
+    border: solid rgba(233, 7, 7, 0.568) 3px;
+    position: absolute;
+    top: 20%;
+    left: 39.5%;
+    display: none;
+    height: 80px;
+    width: 400px;
+    text-align: center;
+
+}
+
+#alertaExito{
+    font-size: 20px;
+    border: solid rgba(17, 226, 52, 0.568) 3px;
+    position: absolute;
+    top: 19%;
+    left: 39.5%;
+    display: none;
+    height: 80px;
+    width: 400px;
+    text-align: center;
+
+}
+
+
+
 button:hover{
     transform: scale(1.2);
 }

@@ -30,21 +30,21 @@ function altaConductor() {
     let sDireccion = frmAltaConductor.txtDireccion.value.trim();
     let dFechaCarnet = new Date(frmAltaConductor.dFechaCarnet.value);
 
-    if (sNif && sNombre && sApellido && sDireccion.length && dFechaCarnet != "Invalid Date") {
+    if (sNif !=""  && sNombre !=""  && sApellido !=""  && sDireccion.length !="" && dFechaCarnet != "Invalid Date") {
 
         let oNuevoConductor = new Conductor(sNif, sNombre, sApellido, sDireccion, dFechaCarnet);
         if (oDGT.altaConductor(oNuevoConductor)) {
-            alert("Conductor Agregado");
+            mostrarExito("Conductor Agregado", '#altaConductorModal');
             limpiarModal();
             $('#altaConductorModal').modal('hide'); //Esta función cierra el modal.
 
         } else {
-            alert("El conductor no se ha podido agregar");
+            mostrarError("El conductor no se ha podido agregar", '#altaConductorModal');
         }
 
 
     } else {
-        alert("rellene todos los campos");
+        mostrarError("Rellene todos los campos", '#altaConductorModal')
     }
 }
 
@@ -74,16 +74,16 @@ function altaGuardiaCivil() {
         let oNuevoGuardiaCivil = new GuardiaCivil(sNif, sNombre, sApellido, sDireccion, sPuesto);
 
         if (oDGT.altaGuardiaCivil(oNuevoGuardiaCivil)) {
-            alert("Guardia Agregado");
+            mostrarExito("Guardia Agregado",'#altaGuardiaCivilModal');
             limpiarModal();
             $('#altaGuardiaCivilModal').modal('hide'); //Esta función cierra el modal.
         } else {
-            alert("El guardia no se ha podido agregar");
+            mostrarError("El guardia no se ha podido agregar",'#altaGuardiaCivilModal');
         }
 
 
     } else {
-        alert("rellene todos los campos");
+        mostrarError("Rellene todos los campos",'#altaGuardiaCivilModal');
     }
 }
 
@@ -95,11 +95,10 @@ function registrarMulta() {
     let sDescripcion = frmRegistroMulta.txtDescripcion.value.trim();
     let dFechaMulta = new Date(frmRegistroMulta.txtFechaAltaMulta.value);
 
-    if(sNifConductor==sNifGuardia){
-        alert("No se puede multar asi mismo");
-    }else{
+    
         if (oDGT._buscarConductor(sNifConductor) != null && oDGT._buscarGuardia(sNifGuardia) != null) {
-            if ((sIdMulta && fImporte && sDescripcion  && dFechaMulta != "Invalid Date")) {
+            if ((sIdMulta !=""  && fImporte !=""  && sDescripcion !=""   && dFechaMulta != "Invalid Date")) {
+                if(sNifConductor!=sNifGuardia){
                 if (frmRegistroMulta.txtPuntos.value.trim().length > 0) {
                     //alta grave
                     let iPuntos = parseInt(frmRegistroMulta.txtPuntos.value.trim());
@@ -113,12 +112,12 @@ function registrarMulta() {
                             limpiarModal();
                             $('#registroMultaModal').modal('hide');
                         }else{
-                            alert("No se ha podido registrar la multa");
+                            mostrarError("No se ha podido registrar la multa");
                         }
 
     
                     } else {
-                        alert("Error al introducir los puntos");
+                        mostrarError("Error al introducir los puntos");
                     }
     
                 } else {
@@ -135,15 +134,19 @@ function registrarMulta() {
                         limpiarModal();
                         $('#registroMultaModal').modal('hide');
                     }else{
-                        alert("No se ha podido registrar la multa");
+                        mostrarError("No se ha podido registrar la multa");
                     }
                 }
+            }else{
+                mostrarError("Un guardia civil no puede multarse a sí mismo");
+            }
             }
             else {
-                alert("Rellene todos los campos");
+                mostrarError("Rellene todos los campos");
             }
+            
         } else {
-            alert("Error al validar NIF");
+            mostrarError("Error al validar NIF");
         }
       
       
@@ -154,7 +157,7 @@ function registrarMulta() {
 
 
    
-}
+
 
 function pagarMulta() {
 
@@ -176,7 +179,7 @@ function pagarMulta() {
             //Si el checkbox "bPagada" no tiene el valor (checked==true) avisa 
             //que no ha cambiado nada porque la multa ya tenia el atributo pagada en false
             if (bPagada == false) {
-                alert("No se ha cambiado nada");
+                mostrarError("No se ha cambiado nada");
             }
             else {
                 //Si la multa tenia el atributo "pagada" en false, y el checkbox esta en true,
@@ -190,12 +193,12 @@ function pagarMulta() {
         }
         else {
             //Si el atributo "pagada" es != de false, entonces porque ya esta pagada=>
-            alert("La multa ya está pagada");
+            mostrarError("La multa ya está pagada");
         }
     }
     else {
         //Si la multa no existe, muestra este mensaje
-        alert("La multa no existe");
+        mostrarError("La multa no existe");
     }
 
 
@@ -240,7 +243,7 @@ function imprimirMulta() {
         }
        
     } else {
-        alert("Rellene todos los campos");
+        mostrarError("Rellene todos los campos");
     }
 
 
@@ -286,6 +289,32 @@ function limpiarModal() {
 }
 
 
+
+function mostrarError(sTexto, Modal){
+    
+    document.getElementById("alerta").innerHTML=sTexto;
+    document.getElementById("alerta").style.display = "block";
+    setTimeout("ocultarError()", 2000);
+    $(Modal).modal('hide');
+
+}
+
+function ocultarError(){
+    document.getElementById("alerta").style.display = "none";
+}
+
+function mostrarExito(sTexto, Modal){
+    
+    document.getElementById("alertaExito").innerHTML=sTexto;
+    document.getElementById("alertaExito").style.display = "block";
+    setTimeout("ocultarExito()", 2000);
+    $(Modal).modal('hide');
+
+}
+
+function ocultarExito(){
+    document.getElementById("alertaExito").style.display = "none";
+}
 /*LISTADOS*/
 
 
