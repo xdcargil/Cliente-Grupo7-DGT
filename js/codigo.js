@@ -108,16 +108,16 @@ function registrarMulta() {
                        // oDGT.registrarMulta(oGrave) ? alert("Se ha registrado la multa")  : alert("No se ha podido registrar la multa");
 
                         if(oDGT.registrarMulta(oGrave)){
-                            mostrarExito("Se ha registrado la multa");
+                            mostrarExito("Se ha registrado la multa",'#registroMultaModal');
                             limpiarModal();
                             $('#registroMultaModal').modal('hide');
                         }else{
-                            mostrarError("No se ha podido registrar la multa");
+                            mostrarError("No se ha podido registrar la multa",'#registroMultaModal');
                         }
 
     
                     } else {
-                        mostrarError("Error al introducir los puntos");
+                        mostrarError("Error al introducir los puntos",'#registroMultaModal');
                     }
     
                 } else {
@@ -130,23 +130,23 @@ function registrarMulta() {
                    // oDGT.registrarMulta(oLeve) ? alert("Se ha registrado la multa") : alert("No se ha podido registrar la multa");
 
                     if(oDGT.registrarMulta(oLeve)){
-                        mostrarExito("Se ha registrado la multa");
+                        mostrarExito("Se ha registrado la multa",'#registroMultaModal');
                         limpiarModal();
                         $('#registroMultaModal').modal('hide');
                     }else{
-                        mostrarError("No se ha podido registrar la multa");
+                        mostrarError("No se ha podido registrar la multa",'#registroMultaModal');
                     }
                 }
             }else{
-                mostrarError("Un guardia civil no puede multarse a sí mismo");
+                mostrarError("Un guardia civil no puede multarse a sí mismo",'#registroMultaModal');
             }
             }
             else {
-                mostrarError("Rellene todos los campos");
+                mostrarError("Rellene todos los campos",'#registroMultaModal');
             }
             
         } else {
-            mostrarError("Error al validar NIF");
+            mostrarError("Error al validar NIF",'#registroMultaModal');
         }
       
       
@@ -179,13 +179,13 @@ function pagarMulta() {
             //Si el checkbox "bPagada" no tiene el valor (checked==true) avisa 
             //que no ha cambiado nada porque la multa ya tenia el atributo pagada en false
             if (bPagada == false) {
-                mostrarError("No se ha cambiado nada");
+                mostrarError("No se ha cambiado nada","#pagarMultaModal");
             }
             else {
                 //Si la multa tenia el atributo "pagada" en false, y el checkbox esta en true,
                 //cambia el atributo "pagada" a true
                 multaACambiar.pagada = bPagada;
-                mostrarExito("Multa pagada");
+                mostrarExito("Multa pagada","#pagarMultaModal");
                 $('#pagarMultaModal').modal('hide');
                 limpiarModal();
 
@@ -193,12 +193,12 @@ function pagarMulta() {
         }
         else {
             //Si el atributo "pagada" es != de false, entonces porque ya esta pagada=>
-            mostrarError("La multa ya está pagada");
+            mostrarError("La multa ya está pagada","#pagarMultaModal");
         }
     }
     else {
         //Si la multa no existe, muestra este mensaje
-        mostrarError("La multa no existe");
+        mostrarError("La multa no existe","#pagarMultaModal");
     }
 
 
@@ -243,7 +243,7 @@ function imprimirMulta() {
         }
        
     } else {
-        mostrarError("Rellene todos los campos");
+        mostrarError("Rellene el campo ID","#listadoMultaModal");
     }
 
 
