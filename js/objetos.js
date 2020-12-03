@@ -201,7 +201,7 @@ class DGT {
             return "No hay Guardia civil";
         }
     }
-
+    
     listadoMultasPorFecha(dFechaIni, dFechaFin) {
         let oListaMultas = this._multas.filter(oMul => oMul.fecha.getTime() >= dFechaIni.getTime() && oMul.fecha.getTime() <= dFechaFin.getTime());
         let sTabla = "";
@@ -228,7 +228,7 @@ class DGT {
             sTabla += `<tr><td colspan="2"> Importe total </td><td>${sumaTotal}</td></tr>`;
 
         } else {
-            sTabla += "<h5 class='text-danger'>¡No se han encontrado multas entre ese rango de Fechas!</h5>";
+            mostrarError("¡No se han encontrado multas entre ese rango de Fechas!",'#listadoMultasFecha');
         }
 
         sTabla += "</tbody>";

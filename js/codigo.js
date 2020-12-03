@@ -221,7 +221,7 @@ function mostrarMultasFecha() {
 
 
     let sContenedorFechasMultas = oDGT.listadoMultasPorFecha(oFechaIni, oFechaFin);
-    let oImprimir = document.getElementById("cuerpoModalListadoMultasFecha");
+    let oImprimir = document.getElementById("resultadoFechas");
 
     oImprimir.innerHTML = sContenedorFechasMultas;
 
@@ -253,6 +253,11 @@ function imprimirMulta() {
 
 }
 
+function cerrarFechaModal(){
+    let oImprimir = document.getElementById("resultadoFechas");
+    oImprimir.innerHTML ="";
+    limpiarModal();
+}
 
 /* MANIPULAR UI */
 

@@ -107,7 +107,7 @@
 
         <div class="form-group">
           <div class="col-md-12">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#listadoMultasFecha">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#listadoMultasFecha" onclick="limpiarModal();">
               Listado Multas Por Fecha
             </button>
           </div>
@@ -573,6 +573,10 @@
                         class="form-control input-md">
                     </div>
                   </div>
+
+                  <div id="resultadoFechas">
+
+                  </div>
                 </form>
               </div>
 
@@ -583,7 +587,8 @@
               <input type="button" class="btn btn-primary" id="btnMultasPorFecha" name="btnMultasPorFecha" value="Mostrar"
                 onclick="mostrarMultasFecha();" />
               <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                onclick="limpiarModal()">Cerrar</button>
+                onclick="cerrarFechaModal();"
+                ">Cerrar</button>
             </div>
 
           </div>
