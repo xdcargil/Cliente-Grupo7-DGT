@@ -2,11 +2,17 @@
 Proyecto DGT
 URL: https://xdcargil.github.io/Cliente-Grupo7-DGT/
 
-## Integrantes:
--Daniel Carmona Gilibert <br>
--Bruno Rodriguez Mendoza <br>
--Julio Vinaza Baena <br>
--Daniel Arana Boza <br>
+## Autores : ✒️
+* **Daniel Carmona Gilibert**  <br>
+* **Bruno Rodriguez Mendoza** <br>
+* **Julio Vinaza Baena** <br>
+* **Daniel Arana Boza** <br>
+
+## Construido con 🛠️
+
+* [HTML5](https://es.wikipedia.org/wiki/HTML5) - HyperText Markup Language
+* [CSS](https://developer.mozilla.org/es/docs/Web/CSS) - Hojas de Estilo en Cascada
+* [JS](https://developer.mozilla.org/es/docs/Web/JavaScript) - JavaScript 
 
 
 ## /-------INFORMACIÓN PARA CARLOS-------/
