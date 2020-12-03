@@ -113,3 +113,7 @@ float: right;
     margin-top: 5%;
     border: solid 1px black;
 }
+
+#tablaMulta td{
+    padding: 10px;
+}

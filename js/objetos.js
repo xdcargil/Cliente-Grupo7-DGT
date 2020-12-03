@@ -109,7 +109,8 @@ class DGT {
         //Este metodo sirve para delvover los datos a código y imprimir por pantalla
         let multa = oDGT.buscarMulta(idMulta);
         let resultado = "";
-        if (multa != null) {
+
+        if (multa != undefined) {
             resultado = multa.toHTMLRow();
             return resultado;
         } else {
@@ -118,12 +119,6 @@ class DGT {
     }
 
     PuntosConductor() {
-        /*listadoPuntosConductor –Genera  un  
-         * listado  con  los puntos  de  sanción  de  cada conductor. 
-         *  En  el  listado  aparecerá  el  NIF  y  el  total  de  puntos  de  
-         * cada  conductor con multas graves. 
-         * Los conductores sin multas graves no aparecerán en el listado. */
-
 
         let aConductores = this._personas.filter(persona => persona instanceof Conductor);
         let aMultasGraves = this._multas.filter(multa => multa instanceof Grave);
@@ -449,10 +444,10 @@ class Leve extends Multa {
         sFila += "<td>" + this.NIFConductor + "</td>";
         sFila += "<td>" + this.NIFGuardia + "</td>";
         sFila += "<td>" + this.importe + "</td>";
-        sFila += "<td>" + this.pagada + "</td>";
+        sFila += "<td>" + this.pagada ? "<td>Si</td>" : "<td>No</td>"+ "</td>";
         sFila += "<td>" + this.descripcion + "</td>";
         sFila += "<td>" + `${this.fecha.getDate()}/${this.fecha.getMonth() + 1}/${this.fecha.getFullYear()}` + "</td>";
-        sFila += "<td>" + this.bonificada + "</td>";
+        sFila += "<td>" + this.bonificada? "<td>Si</td>" : "<td>No</td>" + "</td>";
         sFila += "</tr>";
 
         return sFila;
@@ -480,7 +475,7 @@ class Grave extends Multa {
         sFila += "<td>" + this.NIFConductor + "</td>";
         sFila += "<td>" + this.NIFGuardia + "</td>";
         sFila += "<td>" + this.importe + "</td>";
-        sFila += "<td>" + this.pagada + "</td>";
+        sFila += "<td>" + this.pagada ? "<td>Si</td>" : "<td>No</td>" + "</td>";
         sFila += "<td>" + this.descripcion + "</td>";
         sFila += "<td>" + `${this.fecha.getDate()}/${this.fecha.getMonth() + 1}/${this.fecha.getFullYear()}` + "</td>";
         sFila += "<td>" + this.puntos + "</td>";
