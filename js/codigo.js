@@ -336,10 +336,9 @@ function limpiarCuerpoModal(iDCapa) {
 
 function mostrarSaldoConductor() {
 
-
-
     let sContenedorSaldoConductor = oDGT.listarSaldoConductor();
     let oImprimir = document.getElementById("cuerpoModalListadoSaldoConductor");
+
     oImprimir.innerHTML = sContenedorSaldoConductor;
 
 }

@@ -117,3 +117,26 @@ float: right;
 #tablaMulta td{
     padding: 10px;
 }
+
+
+#mostrarSaldoConductor,th {
+    border: solid 2px rgba(0, 0, 0, 0.589);
+    text-align: center;
+    margin-left: 20%;
+}
+
+#mostrarSaldoConductor,th,td{
+    font-weight: bold;
+    background-color: rgb(149, 207, 246);
+    text-align: center;
+    padding: 15px;
+}
+
+#mostrarSaldoConductor,td{
+    background-color: white;
+}
+
+#TablaListarGuardiaCivil{
+    margin-left: 12%;
+
+}

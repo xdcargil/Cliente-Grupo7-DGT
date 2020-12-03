@@ -177,7 +177,7 @@ class DGT {
     listarGuardiaCivil() {
 
 
-        let sTabla = '<table border="1">';
+        let sTabla = '<table border="1" id="TablaListarGuardiaCivil">';
         // Encabezado de la tabla
         sTabla += "<thead><tr>";
         sTabla += "<th>NIF</th><th>Nombre</th>";
@@ -300,7 +300,7 @@ class DGT {
 
         let arrayConductores = [];
         let iImporte=0;
-        let sResultado="";
+        let sResultado="<table id='mostrarSaldoConductor'> <th>Nombre Conductor </th> <th> Importe</th>";
         //Introduce en una array a las personas que sean conductores
         for (let oP of this._personas) {
             if (oP instanceof Conductor) {
@@ -325,9 +325,10 @@ class DGT {
               
             }
             //Muestra cada conductor con su importe
-            sResultado+="El conductor: "+oC.nombre+ " debe: "+iImporte +"<br>";
+            sResultado+="<tr> " + "<td>" + oC.nombre + "</td>" + "<td>" + iImporte + "</td>"  +"</tr>";
         }
 
+        sResultado+="</table>";
         return sResultado;
 
     }
