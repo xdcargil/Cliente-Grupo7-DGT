@@ -2,15 +2,15 @@
 var oDGT = new DGT();
 
 /*Objetos para prueba*/
-var oConductor1 = new Conductor("1", "Conductor1", "Apellido1 Apellido2", "Calle1", new Date());
-var oConductor2 = new Conductor("2", "Conductor2", "Apellido1 Apellido2", "Calle2", new Date());
+var oConductor1 = new Conductor("1", "Conductor1", "Apellido1 Apellido2", "Calle1", new Date("2020-10-4"));
+var oConductor2 = new Conductor("2", "Conductor2", "Apellido1 Apellido2", "Calle2", new Date("2030-4-17"));
 var oGuardia1 = new GuardiaCivil("1", "Guardia1", "Apellido1, Apellido2", "cuartel1", "puestoGuardia");
 var oGuardia2 = new GuardiaCivil("3", "Guardia2", "Apellido1, Apellido2", "cuartel1", "puestoGuardia");
 
 //var oMultaPrueba = new Multa(1, "1", "3", 25.5, "Multa de prueba weon", new Date());
 var oMultaPrueba2 = new Leve(2, "1","3",100,"Multa leve",new Date(),true);
-var oMultaPrueba3 = new Grave(3, "1", "3", 25.5, "Multa de prueba Grave weon", new Date(),10);
-var oMultaPrueba4 = new Grave(4, "2", "1", 25.5, "Multa de prueba Grave weon", new Date(),15);
+var oMultaPrueba3 = new Grave(3, "1", "3", 25.5, "Multa de prueba Grave weon", new Date("2020-12-3"),10);
+var oMultaPrueba4 = new Grave(4, "2", "1", 25.5, "Multa de prueba Grave weon", new Date("2020-12-8"),15);
 
 oDGT.altaConductor(oConductor1);
 oDGT.altaConductor(oConductor2);
